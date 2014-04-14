@@ -64,8 +64,8 @@ The Karma config file is located  in /test/spec
 
   (This will install the dependencies declared in the client/package.json file)
   
-* To run jasmine tests with Karma (root folder):
+* To run jasmine tests with Karma (root folder) and refering the karma.config.js:
     ```
-    ./node_modules/karma/bin/karma start
+    ./node_modules/karma/bin/karma start ./test/karma.config.js
     ```
 
