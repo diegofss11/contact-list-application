@@ -11,11 +11,21 @@ module.exports = function( grunt ) {
 				keepalive: true
 			}
 		}
-	}
+	},
+
+	karma: {
+        unit: {
+            configFile: 'test/karma.config.js',
+            runnerPort: 9876,
+            browsers: [ 'Chrome' ]
+        }
+    }
   });
   
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks( 'grunt-karma');
   
   grunt.registerTask( 'default', [ 'connect:server' ] );
+  grunt.registerTask( 'test-karma', [ 'karma' ] );
 };
 
