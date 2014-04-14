@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="contactListApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Contact List Application for Questrade Inc">
+    <meta name="author" content="Diego Freitas Siqueira Souza">
+
+    <!-- Bootstrap core CSS -->
+    <link href="contents/css/bootstrap.css" rel="stylesheet">
+    <link href="contents/css/shop-homepage.css" rel="stylesheet">
+    <link href="contents/css/style.css" rel="stylesheet">
+
+    <title>Contact List</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"></nav>
+
+    <div class="container" ng-controller="ContactController">
+		<div class="row">
+			<div class="col-md-12">
+            	<div class="row" ng-view></div>				
+			</div>
+	     </div>
+    </div>
+    
+    <div class="container">
+		<hr>
+		<footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><b>Diego Souza - <a href="https://github.com/diegofss11">GitHub</a></b>
+                    </p>
+                </div>
+            </div>
+        </footer>
+	</div>
+    
+
+   	<!-- Angular JS -->
+    <script src="/contents/js/angular.min.js"></script>
+	<script src="/contents/js/angular-route.js"></script>
+
+	<!-- External and Bootstrap Libs -->
+    <script src="contents/js/jquery-1.10.2.js"></script>
+    <script src="contents/js/bootstrap.js"></script>
+    <script src="contents/js/ui-bootstrap-tpls-0.10.0.min.js"></script>      
+
+	<!-- Controllers JS -->
+	<script src="/app/app.js"></script>
+	<script src="/app/controllers/ContactController.js"></script>	
+	<script src="/app/controllers/ContactModalInstanceController.js"></script>			
+	<script src="/app/controllers/ConfirmDialogController.js"></script>
+	<script src="/app/controllers/NotifyModalController.js"></script>
+	
+	<!-- Services JS -->
+	<script src="/app/services/ContactService.js"></script>		
+
+	<!-- Directives JS -->		
+	<script src="/app/directives/Directives.js"></script>
+
+</body>
+
+</html>
