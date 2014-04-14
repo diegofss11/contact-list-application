@@ -9,7 +9,7 @@
     <div class="modal-body">
         <div class="form-group"  ng-class="{ 'has-error' : contactForm.name.$invalid && !contactForm.name.$pristine && submitted }">
   		    <label for="name" class="col-sm-2 control-label">Name<span class="required">*</span></label>
-  		    <div class="col-sm-10">
+  		    <div class="col-sm-10"  ng-class="{'readOnlyLabel': isReadOnly}">
     		    <input ng-if="!isReadOnly" type="text" name="name" class="form-control" ng-model="contact.name" placeholder="Name" required>
                 <span ng-if="isReadOnly">{{contact.name}}</span>
                 <span ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="help-block">Name required.</span>
@@ -17,17 +17,17 @@
         </div>
   	    <div class="form-group"  ng-class="{ 'has-error' : contactForm.address.$invalid && !contactForm.address.$pristine && submitted }">
   		    <label for="address" class="col-sm-2 control-label">Address<span class="required">*</span></label>
-  		    <div class="col-sm-10">
-    		    <input ng-if="!isReadOnly" type="text" class="form-control" name="address" ng-model="contact.address" id="address" placeholder="Address" required>
+  		    <div class="col-sm-10"  ng-class="{'readOnlyLabel': isReadOnly}">
+    		    <input ng-if="!isReadOnly"  type="text" class="form-control" name="address" ng-model="contact.address" id="address" placeholder="Address" required>
                 <span ng-if="isReadOnly">{{contact.address}}</span>
                 <span ng-show="contactForm.address.$invalid && !contactForm.address.$pristine" class="help-block">Address required.</span>                
   		    </div>        
         </div>
   	    <div class="form-group"  ng-class="{ 'has-error' : contactForm.phone.$invalid && !contactForm.phone.$pristine && submitted }">
       	    <label for="phone" class="col-sm-2 control-label">Phone<span class="required">*</span></label>
-      		<div class="col-sm-10">
-        	    <input ng-if="!isReadOnly" type="text" class="form-control" ng-model="contact.phone" name="phone" placeholder="Numbers only" required>
-                <span ng-if="isReadOnly">{{contact.phone}}</span>
+      		<div class="col-sm-10"  ng-class="{'readOnlyLabel': isReadOnly}">
+        	    <input ng-if="!isReadOnly" type="text" class="form-control" ng-model="contact.phone" name="phone" placeholder="Phone" required>
+                <span class="readOnlyLabel" ng-if="isReadOnly">{{contact.phone}}</span>
                 <span ng-show="contactForm.phone.$invalid && !contactForm.phone.$pristine" class="help-block">Phone required.</span>
             </div>        
       	</div>  	
