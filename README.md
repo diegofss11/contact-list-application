@@ -1,9 +1,7 @@
-contact-list-application
+Contact List Application
 ========================
 
-Contact List Application
-
-## Stack
+## Technology Stack
 
 * [AngularJS](http://www.angularjs.org/) - Open-source JavaScript framework maintained by Google
 * CSS based on [Bootstrap](http://getbootstrap.com/)
