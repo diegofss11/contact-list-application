@@ -4,7 +4,12 @@
   "title": "Contact List",
   "author": "Diego Freitas Siqueira Souza",
   "main": "Gruntfile.js",
+  "repository" : { 
+      "type" : "git",
+      "url" : "http://github.com/npm/npm.git"
+  },
   "dependencies": {
+    "express": "4.1.1",
     "grunt": "~0.4.4",
     "grunt-autoprefixer": "~0.4.2",
     "grunt-concurrent": "~0.4.3",

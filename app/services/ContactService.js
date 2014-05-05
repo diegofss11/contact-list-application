@@ -1,6 +1,14 @@
-moduleApp.service('ContactService', function () {
+moduleApp.service('ContactService', function ($http) {
 	this.findAll = function () {
-      	return contacts;
+      	var contacts = null;
+      	$http.get('/contacts').success(function(data) {
+			contacts = data;
+		})
+		.error(function(data) {
+			console.log('Error loading Contacts: ' + data);
+		});
+
+		return contacts;      	
 	};	
 
 	this.saveContact = function (newContact) {
