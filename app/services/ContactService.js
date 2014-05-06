@@ -13,12 +13,10 @@
 	});*/
 
 'use strict';
-moduleApp.service('ContactService', function ($http) {
-	var config = require('../config/utils');
-	var BASE_URL = config.BASE_URL;
+moduleApp.service('ContactService', function ($http, config) {
 	this.findAll = function () {
       	var contacts = null;
-      	$http.get(BASE_URL + '/contacts').success(function(data) {
+      	$http.get(config.BASE_URL + '/contacts').success(function(data) {
 			contacts = data;
 		})
 		.error(function(data) {

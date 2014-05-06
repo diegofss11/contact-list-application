@@ -6,6 +6,24 @@ var express = require('express'),
 	mongoose = require('mongoose'),
 	database = require('./config/utils');
 
+// Add headers for CROSS-DOMAIN
+app.use(function (req, res, next) {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:9000');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    // Pass to next layer of middleware
+    next();
+});
+
 //connecting database	
 mongoose.connect(database.CONNECTION_URL); 
 mongoose.set('debug', true);
@@ -19,31 +37,27 @@ db.once('open', function callback () {
 		name: String,
 		address: String,
 		phone: String
-	}, {collection: 'contactList_db'});
+	}, {collection: 'Contact'});
+	
 	//defining model
 	var Contact = mongoose.model('Contact', contactSchema);
 
-	// ********************** express ROUTERS - REST
-	//GET ALL
+	// ********************** express ROUTERS - RESTFUL
 	app.get('/contacts', function(req, res){
-		//using mongoose to get all contacts in the database
 		Contact.find(function (err, contacts){
 			console.log("Finding all Contacts");
-			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err) return res.send(err)		
-			res.json(contacts); // return all contacts in JSON format		
+			res.json(contacts);		
 		})
 	});	
 
-	app.get('/contacts:contactId', function(req, res){
-		Contact.findById(req.contactId, function (err, contact){
-  			console.log("Finding contact id:" + req.contactId);
+	app.get('/contacts/:id', function(req, res){
+		Contact.findById(req.params.id, function (err, contact){
+  			console.log("Finding contact id:" + req.params.id);
   			if (err) return res.send(err)		
-			res.json(contacts); // return all contacts in JSON format	
+			res.json(contact);	
 		})		
-	});	
-	
-
+	});
 });
 
 app.listen(3000, function(){
