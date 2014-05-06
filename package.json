@@ -1,6 +1,6 @@
 {
   "name": "ContactListApplication",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "title": "Contact List",
   "author": "Diego Freitas Siqueira Souza",
   "main": "Gruntfile.js",

@@ -1,3 +1,4 @@
+'use strict';
 moduleApp.controller('ContactModalInstanceController', function ($scope, $modalInstance, items) {
     //set initials values
     if(items == undefined){ 

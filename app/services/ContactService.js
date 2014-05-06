@@ -1,7 +1,24 @@
+/*.factory('Todos', function($http) {
+		return {
+			get : function() {
+				return $http.get('/api/todos');
+			},
+			create : function(todoData) {
+				return $http.post('/api/todos', todoData);
+			},
+			delete : function(id) {
+				return $http.delete('/api/todos/' + id);
+			}
+		}
+	});*/
+
+'use strict';
 moduleApp.service('ContactService', function ($http) {
+	var config = require('../config/utils');
+	var BASE_URL = config.BASE_URL;
 	this.findAll = function () {
       	var contacts = null;
-      	$http.get('/contacts').success(function(data) {
+      	$http.get(BASE_URL + '/contacts').success(function(data) {
 			contacts = data;
 		})
 		.error(function(data) {

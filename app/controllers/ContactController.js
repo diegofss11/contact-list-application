@@ -1,3 +1,4 @@
+'use strict';
 moduleApp.controller('ContactController', function ($scope, $modal, ContactService) {
     $scope.contactAction = function(contactSelected){
 		$modal.open({

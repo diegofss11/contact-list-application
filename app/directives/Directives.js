@@ -1,3 +1,4 @@
+'use strict';
 moduleApp.directive('navBar', function(){
 	return {
 		restrict: 'E',
