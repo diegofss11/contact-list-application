@@ -15,35 +15,32 @@
 'use strict';
 moduleApp.service('ContactService', function ($http, config) {
 	this.findAll = function () {
-      	var contacts = null;
-      	$http.get(config.BASE_URL + '/contacts').success(function(data) {
-			contacts = data;
-		})
-		.error(function(data) {
-			console.log('Error loading Contacts: ' + data);
-		});
-
-		return contacts;      	
-	};	
+      	//var contacts = null;
+      	return $http.get(config.BASE_URL + '/contacts')
+      		.success(function(data) {
+				contacts = data;			
+			})
+			.error(function(data) {
+				console.log('Error loading Contacts: ' + data);
+			});
+			//return contacts;			
+    };	
 
 	this.saveContact = function (newContact) {
-        var previousSize = contacts.length,
-        	contactObj = {
-        		id: previousSize + 1,
-        		name: newContact.name,
-        		address: newContact.address,
-        		phone: newContact.phone
-        	}
+        var contactObj = {
+        	name: newContact.name,
+        	address: newContact.address,
+        	phone: newContact.phone
+        }
         
-        contacts.push(contactObj);
-
-        if(contacts.length > previousSize){
-        	//saved successfully
-        	return true;
-        }
-        else{
-        	false;
-        }
+       $http.post(config.BASE_URL + '/contacts', contactObj)
+			.success(function(data, status, header) {
+				alert("Saved");
+			})
+			.error(function(data) {
+				console.log('Error: ' + data);
+				alert("Saved failed");
+			});        
 	};
 
 	this.updateContact = function (modifiedContact) {

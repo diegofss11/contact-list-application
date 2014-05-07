@@ -1,6 +1,6 @@
 <!-- NAV BAR -->
 <div class="row"><nav-bar></nav-bar></div> 
-<div ng-init="findAll()">    
+<div>    
 	<div ng-repeat="contact in contacts | orderBy:'name' | filter:search">
 		<div class="col-sm-4 col-md-3">
     		<div class="thumbnail contactDiv" ng-click="contactAction(contact)">

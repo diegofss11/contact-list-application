@@ -4,7 +4,10 @@
 var express = require('express'),
 	app = express(),
 	mongoose = require('mongoose'),
-	database = require('./config/utils');
+	database = require('./config/utils'),
+	bodyParser = require('body-parser');
+
+app.use(bodyParser()); //WHY I NEED ?
 
 // Add headers for CROSS-DOMAIN
 app.use(function (req, res, next) {
@@ -43,6 +46,8 @@ db.once('open', function callback () {
 	var Contact = mongoose.model('Contact', contactSchema);
 
 	// ********************** express ROUTERS - RESTFUL
+	
+	//FIND ALL
 	app.get('/contacts', function(req, res){
 		Contact.find(function (err, contacts){
 			console.log("Finding all Contacts");
@@ -51,6 +56,7 @@ db.once('open', function callback () {
 		})
 	});	
 
+	//FIND BY ID
 	app.get('/contacts/:id', function(req, res){
 		Contact.findById(req.params.id, function (err, contact){
   			console.log("Finding contact id:" + req.params.id);
@@ -58,6 +64,26 @@ db.once('open', function callback () {
 			res.json(contact);	
 		})		
 	});
+
+	//CREATE
+	app.post('/contacts', function(req, res) {
+		Contact.create({
+			name : req.body.name,
+			address : req.body.address,
+			phone: req.body.phone
+		}, function(err, contacts) {
+			if (err)
+				res.send(err);
+			// get and return all the contacts after you create another
+			Contact.find(function(err, contacts) {
+				if (err)
+					res.send(err)
+				res.json(contacts);
+			});
+		});
+
+	});
+
 });
 
 app.listen(3000, function(){
