@@ -1,9 +1,10 @@
 'use strict';
 moduleApp.controller('ContactController', function ($scope, $modal, ContactService) {
+    $scope.isSaved = false;
     $scope.contactAction = function(contactSelected){
-		$modal.open({
+        $modal.open({
             templateUrl: '/app/views/FormContactView.html',
-       		controller: 'ContactModalInstanceController',
+            controller: 'ContactModalInstanceController',
             resolve: {
                 items: function () {
                     //passing contact information to controller ModalInstanceController
@@ -14,45 +15,40 @@ moduleApp.controller('ContactController', function ($scope, $modal, ContactServi
             var isOperationSuccessful = false,
                 action = "";
 
-            if(contact.id == 0){ //new contact
+            if(contact._id == undefined){ //new contact
                 isOperationSuccessful = ContactService.saveContact(contact);
-                action = "saved";
+                $scope.isSaved = true;
+                $scope.actionMode = "saved";
             }
             else{
                 isOperationSuccessful = ContactService.updateContact(contact); 
-                action = "updated";
+                $scope.isSaved = true;
+                $scope.actionMode = "updated";
             }
-            if(isOperationSuccessful){
-        	   $modal.open({
-        			templateUrl: '/app/dialogs/NotifyDialog.html',
-        			controller: 'NotifyModalController',                    
-                    resolve: {
-                        items: function () {                           
-                            return action;
-                        }
-                    }
-        		});
-        	}
         });
-	}  
+    }  
 
-	$scope.findAll = function(){
-		$scope.contacts = ContactService.findAll();		
-	}
+    $scope.findAll = function(){
+        ContactService.findAll(function(err, data){
+            $scope.contacts = data;
+        });     
+    }
 
-	$scope.deleteContact = function($event, contact){
-		$event.stopPropagation(); //stop event bubbling
+    $scope.deleteContact = function($event, contact){
+        $event.stopPropagation(); //stop event bubbling
 
-		$modal.open({
-			templateUrl: '/app/dialogs/ConfirmDialog.html',
-			controller: 'ConfirmDialogController',
-			resolve: {
-    			items: function () {
-        			return contact;
-    			}
-    		}
-		}).result.then(function (selectedItem) {
-	       ContactService.deleteContact(selectedItem);
-	    });		
-	}	
+        $modal.open({
+            templateUrl: '/app/dialogs/ConfirmDialog.html',
+            controller: 'ConfirmDialogController',
+            resolve: {
+                items: function () {
+                    return contact;
+                }
+            }
+        }).result.then(function (selectedItem) {
+           ContactService.deleteContact(selectedItem);
+        });     
+    }
+
+    $scope.findAll();
 });

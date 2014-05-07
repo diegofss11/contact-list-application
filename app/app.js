@@ -11,12 +11,7 @@ moduleApp.config( function ($routeProvider, $locationProvider) {
     $routeProvider.
       when('/', {
         controller: 'ContactController',
-        templateUrl: '/app/views/MainView.html',
-        resolve:{
-        	contacts: function(ContactService) {
-            	return ContactService.findAll();
-          	}
-        }
+        templateUrl: '/app/views/MainView.html'
       }).      
       otherwise({
         redirectTo: '/'

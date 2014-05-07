@@ -1,6 +1,5 @@
 
 //NODE CONFIGURATION FILE
-'use strict';
 var express = require('express'),
 	app = express(),
 	mongoose = require('mongoose'),
@@ -71,7 +70,8 @@ db.once('open', function callback () {
 			name : req.body.name,
 			address : req.body.address,
 			phone: req.body.phone
-		}, function(err, contacts) {
+		}, function(err, contact) {
+			debugger;
 			if (err)
 				res.send(err);
 			// get and return all the contacts after you create another
@@ -81,7 +81,22 @@ db.once('open', function callback () {
 				res.json(contacts);
 			});
 		});
+	});
 
+	//DELETE
+	app.delete('contacts/:id', function(req, res) {
+		debugger;
+		Contact.remove({
+			_id : req.body._id
+		}, function(err, contact) {
+			if (err)
+				res.send(err);			
+			Contact.find(function(err, contacts) {
+				if (err)
+					res.send(err)
+				res.json(contacts);
+			});
+		});
 	});
 
 });

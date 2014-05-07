@@ -14,16 +14,17 @@
 
 'use strict';
 moduleApp.service('ContactService', function ($http, config) {
-	this.findAll = function () {
+	
+	this.findAll = function (cb) {
       	//var contacts = null;
-      	return $http.get(config.BASE_URL + '/contacts')
-      		.success(function(data) {
-				contacts = data;			
-			})
-			.error(function(data) {
-				console.log('Error loading Contacts: ' + data);
-			});
-			//return contacts;			
+      	$http.get(config.BASE_URL + '/contacts')
+      	.success(function(data) {
+      		cb(null, data);			
+		})
+		.error(function(data) {
+			console.log('Error loading Contacts: ' + data);
+			cb(data);
+		});
     };	
 
 	this.saveContact = function (newContact) {
@@ -35,6 +36,7 @@ moduleApp.service('ContactService', function ($http, config) {
         
        $http.post(config.BASE_URL + '/contacts', contactObj)
 			.success(function(data, status, header) {
+				debugger;
 				alert("Saved");
 			})
 			.error(function(data) {
@@ -69,7 +71,13 @@ moduleApp.service('ContactService', function ($http, config) {
 	}
 
 	this.deleteContact = function (contact){
-		contacts.splice( $.inArray(contact, contacts), 1 );
+		$http.delete(config.BASE_URL + '/contacts/' + contact._id)
+			.success(function(data) {
+				alert("Removed")
+			})
+			.error(function(data) {
+				console.log('Error: ' + data);
+			});
 	}
 
 

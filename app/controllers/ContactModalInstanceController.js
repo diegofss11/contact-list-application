@@ -15,8 +15,8 @@ moduleApp.controller('ContactModalInstanceController', function ($scope, $modalI
     }
     else{
     	$scope.contact = {
-	        id: items.id,
-	        name: items.name,
+	        _id: items._id,
+            name: items.name,
 	        phone: items.phone,
 	        address: items.address
     	};
@@ -38,7 +38,7 @@ moduleApp.controller('ContactModalInstanceController', function ($scope, $modalI
     	else{
     		//go back to readyOnly mode
     		$scope.contact = {
-		        id: items.id,
+		        _id: items._id,
 		        name: items.name,
 		        phone: items.phone,
 		        address: items.address
