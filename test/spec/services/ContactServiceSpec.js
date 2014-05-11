@@ -1,6 +1,9 @@
 //E2E Testing
 describe('ContactService - Testing CRUD Operations', function(){    
-    var myServiceMock, $httpBackend,
+    //mock contactListApp
+    beforeEach(module('contactListApp'));
+
+    var myServiceMock, $httpBackend, ContactControllerMock,
         BASE_URL = "http://localhost:3000",
         mockContacts = [
             {
@@ -13,26 +16,24 @@ describe('ContactService - Testing CRUD Operations', function(){
                 address: 'Mkt Street',
                 phone: '1456847585'
             }
-        ];
- 
-    //mock contactListApp
-    beforeEach(module('contactListApp'))
+        ];    
     
-    beforeEach(inject(function (ContactService, $httpBackend){
-        $httpBackendMock = $httpBackend;
-        myServiceMock = ContactService; 
-
-        $httpBackendMock.expectGET(BASE_URL + '/contacts/').respond(
-            {"Success": true,"ErrorMessage": "","Result":[mockContacts]}); 
-
-        spyOn(myServiceMock, 'findAll').andCallThrough(); // Calling of the 'findAll' method is ensured      
+    beforeEach(inject(function ($controller, $rootScope){
+        scope = $rootScope.$new();      
+        ContactControllerMock = $controller('ContactController', {
+            $scope: scope
+        });                     
     }));            
     
-    it('should find all the contacts', function(){
-        expect(myServiceMock.findAll).toHaveBeenCalled();
-        //$httpBackendMock.flush();
-        //expect(contactsResponse.length).toBeGreaterThan(0);
-    })    
+    it('should find all the contacts', inject( function (ContactService, $q, $http, config){
+        // Return a successful promise from the ContactService
+        var deferredSuccess = $q.defer();
+        spyOn(ContactService, 'findAll').andReturn(deferredSuccess.promise);
+        expect(ContactService.findAll).toHaveBeenCalled();
+        deferredSuccess.resolve(); // resolves the promise
+       
+        //expect(scope.contacts.length).toBeGreaterThan(0);        
+    }))    
     /*
     it('should add "contact" model', function(){
         var contact = {
