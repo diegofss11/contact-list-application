@@ -1,12 +1,10 @@
-
-//NODE CONFIGURATION FILE
 var express = require('express'),
 	app = express(),
 	mongoose = require('mongoose'),
 	database = require('./config/utils'),
 	bodyParser = require('body-parser');
 
-app.use(bodyParser()); //WHY I NEED ?
+app.use(bodyParser()); //To extract params from the body of the requests
 
 // Add headers for CROSS-DOMAIN
 app.use(function (req, res, next) {
@@ -46,6 +44,10 @@ db.once('open', function callback () {
 
 	// ********************** express ROUTERS - RESTFUL
 	
+	app.get('/', function(req, res) {
+  		res.send('please select a collection, e.g., /contacts')
+	})
+
 	//FIND ALL
 	app.get('/contacts', function(req, res){
 		Contact.find(function (err, contacts){
@@ -65,7 +67,7 @@ db.once('open', function callback () {
 	});
 
 	//CREATE
-	app.post('/contacts', function(req, res) {
+	app.post('/contacts', function (req, res) {
 		Contact.create({
 			name : req.body.name,
 			address : req.body.address,
@@ -83,22 +85,37 @@ db.once('open', function callback () {
 		});
 	});
 
-	//DELETE
-	app.delete('contacts/:id', function(req, res) {
-		debugger;
-		Contact.remove({
-			_id : req.body._id
-		}, function(err, contact) {
-			if (err)
-				res.send(err);			
-			Contact.find(function(err, contacts) {
-				if (err)
-					res.send(err)
-				res.json(contacts);
-			});
-		});
+	//UPDATE
+	app.put('/contacts/:id', function (req, res){
+  		return Contact.findById(req.params.id, function (err, contact) {
+    		contact.name = req.body.name;
+    		product.address = req.body.address;
+    		product.phone = req.body.phone;
+    		
+    		return contact.save(function (err) {
+      			if (!err) {
+        			console.log("Contact was updated");
+      			} else {
+        			console.log(err);
+      			}
+      			return res.send(product);
+    		});
+  		});
 	});
 
+	//DELETE
+	app.delete('contacts/:id', function (req, res) {
+		return Contact.findById(req.params.id, function (err, contact) {
+    		return contact.remove(function (err) {
+      			if (!err) {
+       				console.log("Contact removed");
+        			return res.send('');
+      			} else {
+        			console.log(err);
+      			}
+    		});
+    	});
+    });		
 });
 
 app.listen(3000, function(){

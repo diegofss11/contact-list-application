@@ -1,5 +1,5 @@
 'use strict';
-moduleApp.controller('ContactController', function ($scope, $modal, ContactService) {
+moduleApp.controller('ContactController', function ($scope, $modal, $timeout, ContactService) {
     $scope.isSaved = false;
     $scope.contactAction = function(contactSelected){
         $modal.open({
@@ -12,26 +12,38 @@ moduleApp.controller('ContactController', function ($scope, $modal, ContactServi
                 }
             }
         }).result.then(function (contact){
-            var isOperationSuccessful = false,
-                action = "";
+            var promise = ContactService.saveContact(contact); //promise that something will be executed
+                
+            promise.then(
+                function(data){
+                    $scope.isSaved = true;
+                    $scope.actionMode = data.action;
 
-            if(contact._id == undefined){ //new contact
-                isOperationSuccessful = ContactService.saveContact(contact);
-                $scope.isSaved = true;
-                $scope.actionMode = "saved";
-            }
-            else{
-                isOperationSuccessful = ContactService.updateContact(contact); 
-                $scope.isSaved = true;
-                $scope.actionMode = "updated";
-            }
+                    $timeout(function(){
+                        $scope.isSaved = false;
+                    }, 2000);
+                },
+                function(reason){
+                    $scope.isSaved = false;
+                    alert("Failed to "+ reason.action +": " + reason);
+                }
+            );             
         });
     }  
 
     $scope.findAll = function(){
-        ContactService.findAll(function(err, data){
-            $scope.contacts = data;
-        });     
+        var promise = ContactService.findAll(); //promise that something will be executed
+        promise.then(
+            function(contacts){
+                $scope.contacts = contacts;
+            },
+            function(reason){
+                alert('Failed: ' + reason);
+            },
+            function(percentComplete){
+                $scope.progress = percentComplete;
+            }
+        );            
     }
 
     $scope.deleteContact = function($event, contact){

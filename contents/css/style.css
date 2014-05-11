@@ -118,5 +118,16 @@
 	color: white;
 }
 
+.saveMessage{
+  opacity: 1.0;
+  display: block !important;
+  transition: opacity 1s;
+}
 
+.saveMessage.ng-hide{
+    opacity: 0;
+    margin: 0 ;
+    padding: 0 ;
+    border: none;
+}
 

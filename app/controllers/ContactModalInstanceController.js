@@ -6,12 +6,7 @@ moduleApp.controller('ContactModalInstanceController', function ($scope, $modalI
     	$scope.isReadOnly = false;  	
     	$scope.modalTitle = "Add Contact";
     	$scope.buttonText = 'Save';
-    	$scope.contact = {
-    		id: 0,
-    		name: '',
-    		address: '',
-    		phone: ''
-    	};
+    	$scope.contact = {};
     }
     else{
     	$scope.contact = {
