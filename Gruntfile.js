@@ -24,14 +24,13 @@ module.exports = function( grunt ) {
 	    protractor: {
       		options: {
         		keepAlive: true,
+        		noColor: false,
         		configFile: "test/e2e/protractor.conf.js"
       		},
-      		singlerun: {},
-      		auto: {
-        		keepAlive: true,
+      		dev: {
         		options: {
           			args: {
-            			seleniumPort: 4444
+            			chromeOnly: true
           			}
         		}
       		}
@@ -39,11 +38,11 @@ module.exports = function( grunt ) {
   	});
   
 	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks( 'grunt-karma');
 	grunt.loadNpmTasks('grunt-protractor-runner');
+	grunt.loadNpmTasks( 'grunt-karma');	
 	  
 	grunt.registerTask( 'default', [ 'connect:server' ] );
 	grunt.registerTask( 'test-karma', [ 'karma' ] );
-	grunt.registerTask('test-protractor', ['protractor:auto']);
+	grunt.registerTask('test-protractor', ['protractor']);
 };
 

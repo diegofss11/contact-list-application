@@ -52,7 +52,7 @@ moduleApp.service('ContactService', function ($http, $q, config) {
 	this.updateContact = function (contact) {
 		var deferred = $q.defer();
 
-        	$http.put(config.BASE_URL + '/contacts/' + contact._id)
+        	$http.put(config.BASE_URL + '/contacts/' + contact._id, contact)
 				.success(function(data, status, header) {
 					data.action = "updated";
 					deferred.resolve(data);

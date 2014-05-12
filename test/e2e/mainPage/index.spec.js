@@ -3,7 +3,7 @@ describe("E2E Testing - Open Modal Create Contact", function(){
 
 	beforeEach( function () {
         ptor.get('/');//navigates the router to the route
-
+        browser.get('src/index.html');
         addContactButton = ptor.findElement( protractor.By.className('glyphicon-plus'));
         addContactButton.click();
 

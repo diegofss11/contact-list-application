@@ -1,10 +1,9 @@
 //E2E Testing
 describe('ContactService - Testing CRUD Operations', function(){    
     //mock contactListApp
-    beforeEach(module('contactListApp'));
+    var myServiceMock, $httpBackend,
+        BASE_URL = "http://localhost:3000", $scope, controller, $httpBackend;
 
-    var myServiceMock, $httpBackend, ContactControllerMock,
-        BASE_URL = "http://localhost:3000",
         mockContacts = [
             {
                 name: 'Diego Souza',
@@ -18,22 +17,41 @@ describe('ContactService - Testing CRUD Operations', function(){
             }
         ];    
     
-    beforeEach(inject(function ($controller, $rootScope){
-        scope = $rootScope.$new();      
-        ContactControllerMock = $controller('ContactController', {
-            $scope: scope
-        });                     
-    }));            
-    
+    beforeEach(module('contactListApp'));
+
+    beforeEach( inject(function ($controller, $rootScope, _$httpBackend_, ContactService, $modal, $timeout) {
+        $httpBackend = _$httpBackend_;
+        $scope = $rootScope.$new();
+        controller = $controller('ContactController', {
+            $scope: $scope,
+            ContactService: ContactService,
+            $modal: $modal,
+            $timeout: $timeout
+        });
+    }));
+
+    it('testing', function(){
+        expect(controller.hasAlertVisible).toBe("false");
+    });
+
+    /*
     it('should find all the contacts', inject( function (ContactService, $q, $http, config){
         // Return a successful promise from the ContactService
         var deferredSuccess = $q.defer();
         spyOn(ContactService, 'findAll').andReturn(deferredSuccess.promise);
+        ContactControllerMock.findAll().then(
+            function(contacts){
+                $scope.contacts = contacts;
+            },
+            function(reason){
+                alert('Failed: ' + reason);
+            });  
+        
         expect(ContactService.findAll).toHaveBeenCalled();
         deferredSuccess.resolve(); // resolves the promise
        
         //expect(scope.contacts.length).toBeGreaterThan(0);        
-    }))    
+    }))  */  
     /*
     it('should add "contact" model', function(){
         var contact = {
