@@ -1,6 +1,6 @@
 <!-- NAV BAR -->
 <div class="row"><nav-bar></nav-bar></div> 
-<div class="alert alert-success saveMessage" ng-show="isSaved">
+<div class="alert alert-success saveMessage" ng-show="hasAlertVisible">
  	<strong>You successfully {{actionMode}} a contact
  </div>
 <div>    
@@ -12,7 +12,7 @@
     				<span class="nameTitle">{{contact.name}}</span>
     			</div>
 				<div class="caption contactDetail">
-					<div class="phoneDetail pull-left glyphicon glyphicon-earphone">{{contact._id}}</div>
+					<div class="phoneDetail pull-left glyphicon glyphicon-earphone">{{contact.name}}</div>
 					<div class="addressDetail pull-left glyphicon glyphicon-screenshot">{{contact.address}}</div>
 					<a class="pull-right glyphicon glyphicon-trash" ng-click="deleteContact($event, contact)"></a>
 				</div>    			

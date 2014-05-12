@@ -1,6 +1,6 @@
 'use strict';
 moduleApp.controller('ContactController', function ($scope, $modal, $timeout, ContactService) {
-    $scope.isSaved = false;
+    $scope.hasAlertVisible = false;
     $scope.contactAction = function(contactSelected){
         $modal.open({
             templateUrl: '/app/views/FormContactView.html',
@@ -16,15 +16,15 @@ moduleApp.controller('ContactController', function ($scope, $modal, $timeout, Co
                 
             promise.then(
                 function(data){
-                    $scope.isSaved = true;
+                    $scope.hasAlertVisible = true;
                     $scope.actionMode = data.action;
-
+                    $scope.findAll();
                     $timeout(function(){
-                        $scope.isSaved = false;
+                        $scope.hasAlertVisible = false;
                     }, 2000);
                 },
                 function(reason){
-                    $scope.isSaved = false;
+                    $scope.hasAlertVisible = false;
                     alert("Failed to "+ reason.action +": " + reason);
                 }
             );             
@@ -39,16 +39,11 @@ moduleApp.controller('ContactController', function ($scope, $modal, $timeout, Co
             },
             function(reason){
                 alert('Failed: ' + reason);
-            },
-            function(percentComplete){
-                $scope.progress = percentComplete;
-            }
-        );            
+            });            
     }
 
     $scope.deleteContact = function($event, contact){
         $event.stopPropagation(); //stop event bubbling
-
         $modal.open({
             templateUrl: '/app/dialogs/ConfirmDialog.html',
             controller: 'ConfirmDialogController',
@@ -58,7 +53,21 @@ moduleApp.controller('ContactController', function ($scope, $modal, $timeout, Co
                 }
             }
         }).result.then(function (selectedItem) {
-           ContactService.deleteContact(selectedItem);
+           var promise = ContactService.deleteContact(selectedItem);
+           promise.then(
+            function(data){
+                $scope.actionMode = "deleted";
+                $scope.hasAlertVisible = true;
+                $scope.findAll();
+                $timeout(function(){
+                    $scope.hasAlertVisible = false;
+                }, 2000);
+            },
+            function(reason){
+                alert('Failed to delete: ' + reason);
+            }            
+        );    
+           
         });     
     }
 

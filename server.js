@@ -2,27 +2,12 @@ var express = require('express'),
 	app = express(),
 	mongoose = require('mongoose'),
 	database = require('./config/utils'),
-	bodyParser = require('body-parser');
+	bodyParser = require('body-parser'),
+	cors = require('cors');
 
 app.use(bodyParser()); //To extract params from the body of the requests
+app.use(cors()); //enabling CORS
 
-// Add headers for CROSS-DOMAIN
-app.use(function (req, res, next) {
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:9000');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    // Pass to next layer of middleware
-    next();
-});
 
 //connecting database	
 mongoose.connect(database.CONNECTION_URL); 
@@ -73,7 +58,6 @@ db.once('open', function callback () {
 			address : req.body.address,
 			phone: req.body.phone
 		}, function(err, contact) {
-			debugger;
 			if (err)
 				res.send(err);
 			// get and return all the contacts after you create another
@@ -88,23 +72,22 @@ db.once('open', function callback () {
 	//UPDATE
 	app.put('/contacts/:id', function (req, res){
   		return Contact.findById(req.params.id, function (err, contact) {
-    		contact.name = req.body.name;
-    		product.address = req.body.address;
-    		product.phone = req.body.phone;
-    		
-    		return contact.save(function (err) {
-      			if (!err) {
-        			console.log("Contact was updated");
-      			} else {
-        			console.log(err);
-      			}
-      			return res.send(product);
-    		});
-  		});
+		    contact.name = req.body.name;
+		    contact.address = req.body.address;
+		    contact.phone = req.body.phone;
+		    return contact.save(function (err) {
+		      if (!err) {
+		        console.log("updated");
+		      } else {
+		        console.log(err);
+		      }
+		      return res.send(contact);
+		    });
+  		});  		
 	});
-
+	
 	//DELETE
-	app.delete('contacts/:id', function (req, res) {
+	app.delete('/contacts/:id', function (req, res) {
 		return Contact.findById(req.params.id, function (err, contact) {
     		return contact.remove(function (err) {
       			if (!err) {

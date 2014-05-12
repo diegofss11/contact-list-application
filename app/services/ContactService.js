@@ -40,7 +40,6 @@ moduleApp.service('ContactService', function ($http, $q, config) {
 				})
 				.error(function(data) {
 					console.log('Error saving Contact: ' + data);
-					data.action = "saved";
 					deferred.reject(data);
 				}); 
 				return deferred.promise;       
@@ -53,26 +52,29 @@ moduleApp.service('ContactService', function ($http, $q, config) {
 	this.updateContact = function (contact) {
 		var deferred = $q.defer();
 
-        	$http.put(config.BASE_URL + '/contacts' + contact._id)
+        	$http.put(config.BASE_URL + '/contacts/' + contact._id)
 				.success(function(data, status, header) {
 					data.action = "updated";
 					deferred.resolve(data);
 				})
 				.error(function(data) {
 					console.log('Error updating Contact: ' + data);
-					data.action = "updated";
 					deferred.reject(data);
 				}); 
 				return deferred.promise;       
 	};   
 	
 	this.deleteContact = function (contact){
-		$http.delete(config.BASE_URL + '/contacts/' + contact._id)
-			.success(function(data) {
-				alert("Removed")
-			})
-			.error(function(data) {
-				console.log('Error: ' + data);
-			});
+		var deferred = $q.defer();
+			$http.delete(config.BASE_URL + '/contacts/' + contact._id)
+				.success(function(data, status, header) {
+					data.action = "deleted";
+					deferred.resolve(data);										
+				})
+				.error(function(data) {
+					console.log('Error deleting Contact: ' + data);
+					deferred.reject(data);
+				}); 
+				return deferred.promise;
 	}	
 });
