@@ -7,8 +7,8 @@ Contact List Application
 * CSS based on [Bootstrap](http://getbootstrap.com/)
 * Unit tests by [Jasmine Framework](http://jasmine.github.io/) - Open-source testing framework for JavaScript
 * [Karma] (http://karma-runner.github.io/0.12/index.html) -  Spawns a web server that executes source code against test code
-* [Express] (http://expressjs.com/) - Express is a minimal and flexible node.js web application framework, providing a robust set of features for building single and multi-page, and hybrid web applications
 * [Protractor] (https://github.com/angular/protractor) - Protractor is an end to end test framework built for AngularJS
+* [Express] (http://expressjs.com/) - Express is a minimal and flexible node.js web application framework, providing a robust set of features for building single and multi-page, and hybrid web applications
 * [NodeJS] (http://nodejs.org/) - Plataform for easily building fast, scalable network applications - API REST using this tool
 * [MongoDB] (http://www.mongodb.org/) - An open-source document database, and the leading NoSQL database
 * [MongoHQ] (http://www.mongohq.com/) - Fully-managed platform used by developers to deploy, host and scale MongoDB databases. The database of Contacts is hosted on this plataform
