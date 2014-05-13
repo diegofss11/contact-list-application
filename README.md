@@ -84,3 +84,4 @@ The Karma config file is located  in /test/spec
     grunt karma
     ```
 
+* To run protractor using Grunt(root folder): - On going ...
