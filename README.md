@@ -48,8 +48,9 @@ The application server is a NodeJS application that relies upon some 3rd Party n
 
   (This will install the dependencies declared in the package.json file)
   
-* To run the CLIENTE project
-   ```
+* To run the CLIENTE project:
+   
+    ```
     cd contact-list-application
     grunt
     ```
@@ -57,7 +58,8 @@ The application server is a NodeJS application that relies upon some 3rd Party n
 The application is hosted in (http://localhost:9000/)
 
 * To run the node API server
-   ```
+
+    ```
     cd contact-list-application
     node server.js
     ```
