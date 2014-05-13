@@ -1,4 +1,4 @@
-Contact List Application
+Contact List Application V2.0
 ========================
 
 ## Technology Stack
