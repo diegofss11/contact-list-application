@@ -76,5 +76,39 @@ moduleApp.service('ContactService', function ($http, $q, config) {
 					deferred.reject(data);
 				}); 
 				return deferred.promise;
-	}	
+	}
+	/*
+	//MOCKS EXAMPLE
+	var contacts = [
+		{
+			id: 1, name: 'Diego Souza1', address: 'Market Street 500', phone: 1234567
+		},
+		{
+			id: 2, name: 'Diego Souza2', address: 'Market Street 500', phone: 1234568
+		},
+		{
+			id: 3, name: 'Diego Souza3', address: 'Market Street 500', phone: 1234569
+		},
+		{
+			id: 4, name: 'Diego Souza4', address: 'Market Street 500', phone: 12345610
+		},
+		{
+			id: 5, name: 'Diego Souza5', address: 'Market Street 500', phone: 12345611
+		},
+		{
+			id: 6, name: 'Diego Souza6', address: 'Market Street 500', phone: 12345612
+		},
+		{
+			id: 7, name: 'Diego Souza7', address: 'Market Street 500', phone: 12345613
+		},
+		{
+			id: 8, name: 'Diego Souza8', address: 'Market Street 500', phone: 12345614
+		},
+		{
+			id: 9, name: 'Diego Souza9', address: 'Market Street 500', phone: 12345615
+		},
+		{
+			id: 10, name: 'Diego Souza10', address: 'Market Street 500', phone: 12345616
+		}        
+    ]; */
 });
