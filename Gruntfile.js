@@ -34,15 +34,37 @@ module.exports = function( grunt ) {
           			}
         		}
       		}
-    	}	    
+    	},
+
+    	compass: {
+		    dev: {
+		      options: {
+		        sassDir: 'contents/sass',
+		        cssDir: 'contents/css/'
+		      }
+		    }
+  		}	    
   	});
+
+  	//** LOAD TASKS
   
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-protractor-runner');
 	grunt.loadNpmTasks( 'grunt-karma');	
+	grunt.loadNpmTasks('grunt-contrib-compass');
+
+	//** REGISTER TASKS
 	  
-	grunt.registerTask( 'default', [ 'connect:server' ] );
-	grunt.registerTask( 'test-karma', [ 'karma' ] );
-	grunt.registerTask('test-protractor', ['protractor']);
+	//DEFAULT
+	grunt.registerTask('default', [ 'connect:server' ] );
+
+	//GRUNT TEST-KARMA
+	grunt.registerTask('test-karma', [ 'karma' ] );
+	
+	//GRUNT TEST-PROTRACTOR
+	grunt.registerTask('test-protractor', ['protractor'] );
+	
+	//GRUNT SASS
+	grunt.registerTask('sass', ['compass:dev'] );
 };
 
