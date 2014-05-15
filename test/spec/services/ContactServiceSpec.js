@@ -1,25 +1,21 @@
 //E2E Testing
-describe('ContactService - Testing CRUD Operations', function(){    
-    //mock contactListApp
-    var myServiceMock, $httpBackend,
-        BASE_URL = "http://localhost:3000", $scope, controller, $httpBackend;
+describe('ContactController - Testing CRUD Operations', function(){    
+    var ContactController, scope, ContactService;
 
-        mockContacts = [
-            {
-                name: 'Diego Souza',
-                address: 'Hudson Street',
-                phone: '553188848176'
-            },
-            {
-                name: 'Albert Silva',
-                address: 'Mkt Street',
-                phone: '1456847585'
-            }
-        ];    
-    
-    beforeEach(module('contactListApp'));
+         
+    beforeEach(module('contactListApp', 'itemsMock'));    
+	
+    // Initialize the controller and a mock scope
+  	beforeEach( inject(function ($controller, $rootScope, ContactService) {
+    	scope = $rootScope.$new();
+    	ContactController = $controller('ContactController', {
+      		$scope: scope
+    	});
+    	ContactService = ContactService;
+  	}));
 
-    beforeEach( inject(function ($controller, $rootScope, _$httpBackend_, ContactService, $modal, $timeout) {
+
+	/*beforeEach( inject(function ($controller, $rootScope, _$httpBackend_, ContactService, $modal, $timeout) {
         $httpBackend = _$httpBackend_;
         $scope = $rootScope.$new();
         controller = $controller('ContactController', {
@@ -28,10 +24,10 @@ describe('ContactService - Testing CRUD Operations', function(){
             $modal: $modal,
             $timeout: $timeout
         });
-    }));
+    }));*/
 
     it('testing', function(){
-        expect(controller.hasAlertVisible).toBe("false");
+       expect(ContactController.hasAlertVisible).toBe("false");
     });
 
     /*
