@@ -1,17 +1,3 @@
-/*.factory('Todos', function($http) {
-		return {
-			get : function() {
-				return $http.get('/api/todos');
-			},
-			create : function(todoData) {
-				return $http.post('/api/todos', todoData);
-			},
-			delete : function(id) {
-				return $http.delete('/api/todos/' + id);
-			}
-		}
-	});*/
-
 'use strict';
 moduleApp.service('ContactService', function ($http, $q, config) {
 	
