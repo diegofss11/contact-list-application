@@ -1,16 +1,23 @@
 describe("E2E Testing - Open Modal Create Contact", function(){
-	var ptor = protractor.getInstance();
+	
+    var pageObjects;
 
 	beforeEach( function () {
-        ptor.get('/');//navigates the router to the route
-        browser.get('src/index.html');
-        addContactButton = ptor.findElement( protractor.By.className('glyphicon-plus'));
-        addContactButton.click();
-
+        //pageObjects = new ContactListPageObjects();
     });
 
+    it('Should have a addButton', function () {
+        browser.get('/');//navigates the router to the route
+        var addContactButtonFinder = element(by.css('.glyphicon-plus'));  
+        expect(addContactButtonFinder).toBeDefined(); 
+
+    });
+    /*
     it('Should open a modal', function () {
-        modal = ptor.findElement( protractor.By.className( 'modal' ) );
-        debugger;
-    });	
+        browser.get('/');//navigates the router to the route
+        var addContactButtonFinder = element(by.css('.glyphicon-plus'));       
+        //addContactButtonFinder.click();
+        /*var modal = element(by.css('.modal-content'));  
+        expect(modal).toEqual(1);    
+    });*/
 });
