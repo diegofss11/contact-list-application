@@ -15,7 +15,7 @@ angular.module('itemsMock', [])
     {
          _id: 3,
         name: 'John Lima',
-        address: 'Replace Avenue',
+        address: 'Street Hunger',
         phone: '2555712'
     }
   ])
