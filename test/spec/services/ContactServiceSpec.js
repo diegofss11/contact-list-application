@@ -1,17 +1,17 @@
 describe('ContactService - Testing CRUD Operations', function(){    
     var ContactServiceMock,
-        contactsMock,        
         httpBackend,
-        baseURL;
+        CONTACTS_MOCK,        
+        BASE_URL;
          
     beforeEach(module('contactListApp', 'itemsMock'));    
 	
     // Initialize the controller and a mock scope
-  	beforeEach( inject(function (_ContactService_, CONTACTS_MOCK, _$httpBackend_, BASE_URL) {
+  	beforeEach( inject(function (_ContactService_, _CONTACTS_MOCK_, _$httpBackend_, _BASE_URL_) {
     	httpBackend = _$httpBackend_;
         ContactServiceMock = _ContactService_;
-        contactsMock = CONTACTS_MOCK;
-        baseURL = BASE_URL;
+        CONTACTS_MOCK = _CONTACTS_MOCK_;
+        BASE_URL = _BASE_URL_;
     }));
 
     // make sure no expectations were missed in your tests.
@@ -24,7 +24,7 @@ describe('ContactService - Testing CRUD Operations', function(){
         var result, 
             returnedPromise;
 
-        httpBackend.whenGET(baseURL + '/contacts').respond(contactsMock);
+        httpBackend.whenGET(BASE_URL + '/contacts').respond(CONTACTS_MOCK);
         
         //making the call
         returnedPromise  = ContactServiceMock.findAll();
@@ -48,7 +48,7 @@ describe('ContactService - Testing CRUD Operations', function(){
                 phone: '2555712'
             }
 
-        httpBackend.whenDELETE(baseURL + '/contacts/' + contactToDelete._id).respond(contactsMock);
+        httpBackend.whenDELETE(BASE_URL + '/contacts/' + contactToDelete._id).respond(CONTACTS_MOCK);
         
         //making the call
         returnedPromise  = ContactServiceMock.deleteContact(contactToDelete);
@@ -75,7 +75,7 @@ describe('ContactService - Testing CRUD Operations', function(){
                 phone: 'New Phone'
             }
         
-        httpBackend.whenPOST(baseURL + '/contacts', newContact).respond(contactsMock);
+        httpBackend.whenPOST(BASE_URL + '/contacts', newContact).respond(CONTACTS_MOCK);
         
         //making the call
         returnedPromise  = ContactServiceMock.saveContact(newContact);
@@ -92,7 +92,7 @@ describe('ContactService - Testing CRUD Operations', function(){
     it('should UPDATE a contact with ID 1', function(){
         var result, 
             returnedPromise,
-            contactToUpdate = contactsMock[0],
+            contactToUpdate = CONTACTS_MOCK[0],
             contactUpdated = {
                 _id: 1,
                 name: 'Diego Freitas Siqueira Souza',
@@ -100,15 +100,16 @@ describe('ContactService - Testing CRUD Operations', function(){
                 phone: '553188848176'
             }
         
-        httpBackend.whenPUT(baseURL + '/contacts/' + contactToUpdate._id, contactUpdated).respond(contactsMock);
+        httpBackend.whenPUT(BASE_URL + '/contacts/' + contactToUpdate._id, contactUpdated).respond(CONTACTS_MOCK);
         
         //making the call
         returnedPromise  = ContactServiceMock.saveContact(contactUpdated);
 
         returnedPromise.then(function (contacts){
-           contacts[contactsMock.indexOf(contactToUpdate)] = contactUpdated;  
+           contacts[CONTACTS_MOCK.indexOf(contactToUpdate)] = contactUpdated;  
            result = contacts;         
         });
+        
         //flushes any request then allow then() call to be executed when the promise is resolved in the success()
         httpBackend.flush(); 
         expect(result.length).toEqual(3);  
