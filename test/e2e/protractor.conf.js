@@ -10,7 +10,8 @@ exports.config = {
         isVerbose: false,
         showColors: true,
         includeStackTrace: true
-    },    
+    },   
+     
     capabilities: {
         'browserName': 'chrome'
     },
