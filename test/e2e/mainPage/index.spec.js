@@ -12,12 +12,12 @@ describe("E2E Testing - Open Modal Create Contact", function(){
         expect(addContactButtonFinder).toBeDefined(); 
 
     });
-    /*
+
     it('Should open a modal', function () {
         browser.get('/');//navigates the router to the route
         var addContactButtonFinder = element(by.css('.glyphicon-plus'));       
-        //addContactButtonFinder.click();
-        /*var modal = element(by.css('.modal-content'));  
-        expect(modal).toEqual(1);    
-    });*/
+        addContactButtonFinder.click();
+        var modal = element(by.id('contactForm'));  
+        expect(modal).toEqual(1);   
+    });
 });

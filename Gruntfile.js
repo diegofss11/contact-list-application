@@ -1,5 +1,4 @@
-module.exports = function( grunt ) {
- 
+module.exports = function( grunt ) { 
 	grunt.initConfig({
 	  	pkg: grunt.file.readJSON('package.json'),
 		connect: {
@@ -12,7 +11,6 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
-
 		karma: {
 	        unit: {
 	            configFile: 'test/karma.config.js',
@@ -20,7 +18,6 @@ module.exports = function( grunt ) {
 	            browsers: [ 'Chrome' ]
 	        }
 	    },
-
 	    protractor: {
       		options: {
         		keepAlive: true,
@@ -35,7 +32,6 @@ module.exports = function( grunt ) {
         		}
       		}
     	},
-
     	compass: {
 		    dev: {
 		      options: {
@@ -46,25 +42,24 @@ module.exports = function( grunt ) {
   		}	    
   	});
 
-  	//** LOAD TASKS
-  
+  	//** LOAD TASKS  
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-protractor-runner');
-	grunt.loadNpmTasks( 'grunt-karma');	
+	grunt.loadNpmTasks('grunt-karma');	
 	grunt.loadNpmTasks('grunt-contrib-compass');
 
 	//** REGISTER TASKS
 	  
 	//DEFAULT
-	grunt.registerTask('default', [ 'connect:server' ] );
+	grunt.registerTask('default',['connect:server']);
 
 	//GRUNT TEST-KARMA
-	grunt.registerTask('test-karma', [ 'karma' ] );
+	grunt.registerTask('test-karma',['karma']);
 	
 	//GRUNT TEST-PROTRACTOR
-	grunt.registerTask('test-protractor', ['protractor'] );
+	grunt.registerTask('test-protractor',['protractor']);
 	
 	//GRUNT SASS
-	grunt.registerTask('sass', ['compass:dev'] );
+	grunt.registerTask('sass',['compass:dev']);
 };
 
