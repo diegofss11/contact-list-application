@@ -1,9 +1,22 @@
 var ContactListPageObjects = function() {
-     this.addContactButtonFinder = element(by.css('.glyphicon-plus'));
-     this.modalForm = element(By.id('contactForm'));
-     this.nameInput = element(By.input('contact.name'));
-     this.addressInput = element(By.input('contact.address'));
-     this.phoneInput = element(By.input('contact.phone'));
+    this.addContactButton = element(by.css('.glyphicon-plus'));
+    this.modalForm = element(By.id('contactForm'));
+    this.nameInput = element(By.input('contact.name'));
+    this.addressInput = element(By.input('contact.address'));
+    this.phoneInput = element(By.input('contact.phone'));
+    this.modalWindow = element(By.className('modal-content'));
+
+	this.findFirstContact = function(){
+    	return element.all(By.repeater('contact in contacts')).first();
+    }
+
+    this.modalWindowActionTitle = function(){
+        return element(By.binding('modalTitle')).getText();
+    }
+
+    this.closeModal = function(){
+    	element(By.buttonText('Cancel')).click();
+    }
 };
 
 module.exports = new ContactListPageObjects();
