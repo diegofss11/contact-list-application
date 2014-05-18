@@ -6,6 +6,7 @@ Contact List Application V2.0
 * [AngularJS](http://www.angularjs.org/) - Open-source JavaScript framework maintained by Google
 * CSS based on [Bootstrap](http://getbootstrap.com/)
 * Unit tests by [Jasmine Framework](http://jasmine.github.io/) - Open-source testing framework for JavaScript
+* [SASS - Syntactically Awesome Style Sheets ] (http://sass-lang.com/) - Sass is an extension of CSS that adds power and elegance to the basic language
 * [Karma] (http://karma-runner.github.io/0.12/index.html) -  Spawns a web server that executes source code against test code
 * [Protractor] (https://github.com/angular/protractor) - Protractor is an end to end test framework built for AngularJS
 * [Express] (http://expressjs.com/) - Express is a minimal and flexible node.js web application framework, providing a robust set of features for building single and multi-page, and hybrid web applications
