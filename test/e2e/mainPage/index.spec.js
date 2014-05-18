@@ -1,23 +1,24 @@
 describe("E2E Testing - Open Modal Create Contact", function(){
 	
-    var pageObjects;
+    var contactPageObjects = require('../ContactListPageObjects.js') ;
 
 	beforeEach( function () {
-        //pageObjects = new ContactListPageObjects();
+        browser.get('/');//navigates the router to the route
+        browser.waitForAngular();
     });
 
     it('Should have a addButton', function () {
-        browser.get('/');//navigates the router to the route
-        var addContactButtonFinder = element(by.css('.glyphicon-plus'));  
-        expect(addContactButtonFinder).toBeDefined(); 
-
+        expect(contactPageObjects.addContactButtonFinder).toBeDefined(); 
     });
 
-    it('Should open a modal', function () {
-        browser.get('/');//navigates the router to the route
-        var addContactButtonFinder = element(by.css('.glyphicon-plus'));       
-        addContactButtonFinder.click();
-        var modal = element(by.id('contactForm'));  
-        expect(modal).toEqual(1);   
+    it('Should open a modal form', function () {
+        contactPageObjects.addContactButtonFinder.click();
+        expect(contactPageObjects.modalForm.isDisplayed()).toBe(true); 
+    });
+
+    it('ADD Contact form\'s input is visible', function(){
+        expect(contactPageObjects.nameInput).not.toBe(null);
+        expect(contactPageObjects.addressInput).not.toBe(null);
+        expect(contactPageObjects.phoneInput).not.toBe(null);       
     });
 });

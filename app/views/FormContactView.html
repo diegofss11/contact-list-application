@@ -18,7 +18,7 @@
   	    <div class="form-group"  ng-class="{ 'has-error' : contactForm.address.$invalid && !contactForm.address.$pristine && submitted }">
   		    <label for="address" class="col-sm-2 control-label">Address<span class="required">*</span></label>
   		    <div class="col-sm-10"  ng-class="{'readOnlyLabel': isReadOnly}">
-    		    <input ng-if="!isReadOnly"  type="text" class="form-control" name="address" ng-model="contact.address" id="address" placeholder="Address" required>
+    		    <input ng-if="!isReadOnly"  type="text" class="form-control" name="address" ng-model="contact.address" placeholder="Address" required>
                 <span ng-if="isReadOnly">{{contact.address}}</span>
                 <span ng-show="contactForm.address.$invalid && !contactForm.address.$pristine" class="help-block">Address required.</span>                
   		    </div>        
