@@ -80,8 +80,14 @@ The Karma config file is located  in /test/spec
   (This will install the dependencies declared in the client/package.json file)
   
 * To run jasmine tests with Karma using NodeJS(root folder):
+    
     ```
     grunt karma
     ```
 
-* To run protractor using Grunt(root folder): - On going ...
+### Protractor
+* To run protractor using Grunt(root folder):
+    
+    ```
+    grunt protractor
+    ```
