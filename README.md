@@ -31,10 +31,10 @@ You need to install Node.js and then the development tools. Node.js comes with a
 
 Either clone this repository or fork it on GitHub and clone your fork:
 
-```
-git clone https://github.com/diegofss11/contact-list-application.git
-cd contact-list-application
-```
+    ```
+    git clone https://github.com/diegofss11/contact-list-application.git
+    cd contact-list-application
+    ```
 
 ### App Server
 
@@ -58,7 +58,7 @@ The application server is a NodeJS application that relies upon some 3rd Party n
 
 The application is hosted in (http://localhost:9000/)
 
-* To run the node API server
+* To run the node REST API server
 
     ```
     cd contact-list-application
@@ -67,26 +67,19 @@ The application is hosted in (http://localhost:9000/)
 
 In root, the server API configuration is located in server.js
 
-### Karma and Jasmine Configutation
+### Karma and Jasmine Unit Tests
 
 All the tests files are included in /test/spec/services/*
 The Karma config file is located  in /test/spec
 
-* Install Karma (from project root folder):
-
-    ```
-    npm install -g karma
-    ```
-
-  (This will install the dependencies declared in the client/package.json file)
-  
-* To run jasmine tests with Karma using NodeJS(root folder):
+* To run jasmine tests with Karma using Grunt(root folder):
     
     ```
-    grunt karma
+    grunt karma or grunt test-karma
     ```
 
-### Protractor
+### Protractor E2E Tests
+
 * To run protractor using Grunt(root folder):
     
     ```
