@@ -3,6 +3,8 @@ Contact List Application V2.0
 
 ## Technology Stack
 
+* <b>[MEAN Stack]</b> - stands for MongoDB, Express, Node.js and AngularJS
+
 * [AngularJS](http://www.angularjs.org/) - Open-source JavaScript framework maintained by Google
 * CSS based on [Bootstrap](http://getbootstrap.com/)
 * Unit tests by [Jasmine Framework](http://jasmine.github.io/) - Open-source testing framework for JavaScript
