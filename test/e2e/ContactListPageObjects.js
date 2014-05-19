@@ -5,6 +5,7 @@ var ContactListPageObjects = function() {
     this.addressInput = element(By.input('contact.address'));
     this.phoneInput = element(By.input('contact.phone'));
     this.modalWindow = element(By.className('modal-content'));
+    this.modalDelete = element(By.className('alert-warning'));
 
 	this.findFirstContact = function(){
     	return element.all(By.repeater('contact in contacts')).first();

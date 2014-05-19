@@ -1,5 +1,4 @@
-describe("E2E Testing for Contact App", function(){
-	
+describe("E2E Testing for Contact App", function(){	
     var contactPageObjects = require('../ContactListPageObjects.js');
 
 	beforeEach( function () {
@@ -39,4 +38,11 @@ describe("E2E Testing for Contact App", function(){
 
         expect(contactPageObjects.modalWindowActionTitle()).toBe("Contact Details");
     }); 
+
+    it('Open DELETE contact modal', function(){
+        var firstThumbnail = contactPageObjects.findFirstContact();
+        firstThumbnail.findElement(By.className('glyphicon-trash')).click(); 
+
+        expect(contactPageObjects.modalDelete.isPresent()).toBeTruthy();
+    })
 });
