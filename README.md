@@ -3,7 +3,7 @@ Contact List Application V2.0
 
 ## Technology Stack
 
-* <b>[MEAN Stack]</b> - stands for MongoDB, Express, Node.js and AngularJS
+* <b>[MEAN Stack]</b> - stands for <b>M</b>ongoDB, <b>E</b>xpress, <b>N</b>ode.js and <b>A</b>ngularJS
 
 * [AngularJS](http://www.angularjs.org/) - Open-source JavaScript framework maintained by Google
 * CSS based on [Bootstrap](http://getbootstrap.com/)
