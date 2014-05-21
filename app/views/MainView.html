@@ -1,8 +1,6 @@
 <!-- NAV BAR -->
 <div class="row"><nav-bar></nav-bar></div> 
-<div class="alert alert-success saveMessage" ng-show="hasAlertVisible">
- 	<strong>You successfully {{actionMode}} a contact
- </div>
+<div save-message action="{{actionMode}}" ng-show="hasAlertVisible"></div>
 <div>    
 	<div ng-repeat="contact in contacts | orderBy:'name' | filter:search">
 		<div class="col-sm-4 col-md-3">
