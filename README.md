@@ -3,6 +3,8 @@ Contact List Application V2.0
 
 ## Technology Stack
 
+* <b>[MEAN Stack]</b> - stands for <b>M</b>ongoDB, <b>E</b>xpress, <b>A</b>ngularJS, <b>N</b>ode.js
+
 * [AngularJS](http://www.angularjs.org/) - Open-source JavaScript framework maintained by Google
 * CSS based on [Bootstrap](http://getbootstrap.com/)
 * Unit tests by [Jasmine Framework](http://jasmine.github.io/) - Open-source testing framework for JavaScript
@@ -83,5 +85,5 @@ The Karma config file is located  in /test/spec
 * To run protractor using Grunt(root folder):
     
     ```
-    grunt protractor
+    grunt protractor or grunt test-protractor
     ```
