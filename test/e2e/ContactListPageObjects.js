@@ -1,5 +1,5 @@
 var ContactListPageObjects = function() {
-    this.addContactButton = element(by.css('.glyphicon-plus'));
+    this.addContactButton = element(By.css('.glyphicon-plus'));
     this.modalForm = element(By.id('contactForm'));
     this.nameInput = element(By.input('contact.name'));
     this.addressInput = element(By.input('contact.address'));
@@ -9,15 +9,15 @@ var ContactListPageObjects = function() {
 
 	this.findFirstContact = function(){
     	return element.all(By.repeater('contact in contacts')).first();
-    }
+    };
 
     this.modalWindowActionTitle = function(){
         return element(By.binding('modalTitle')).getText();
-    }
+    };
 
     this.closeModal = function(){
     	element(By.buttonText('Cancel')).click();
-    }
+    };
 };
 
 module.exports = new ContactListPageObjects();

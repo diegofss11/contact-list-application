@@ -22,7 +22,7 @@ module.exports = function( grunt ) {
       		options: {
         		keepAlive: true,
         		noColor: false,
-        		configFile: "test/e2e/protractor.conf.js"
+        		configFile: 'test/e2e/protractor.conf.js'
       		},
       		dev: {
         		options: {
@@ -39,7 +39,17 @@ module.exports = function( grunt ) {
 		        cssDir: 'contents/css/'
 		      }
 		    }
-  		}	    
+  		},
+  		jshint: {
+  			allFiles: [
+        		'Gruntfile.js',
+        		'app/**/*.js',
+        		'test/**/*.js',
+      		],
+      		options: {
+        		jshintrc: '.jshintrc'
+      		}      	
+    	}	    
   	});
 
   	//** LOAD TASKS  
@@ -47,6 +57,7 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks('grunt-protractor-runner');
 	grunt.loadNpmTasks('grunt-karma');	
 	grunt.loadNpmTasks('grunt-contrib-compass');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 
 	//** REGISTER TASKS
 	  

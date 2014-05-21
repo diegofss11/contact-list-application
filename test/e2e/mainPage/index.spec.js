@@ -1,4 +1,4 @@
-describe("E2E Testing for Contact App", function(){	
+describe('E2E Testing for Contact App', function(){	
     var contactPageObjects = require('../ContactListPageObjects.js');
 
 	beforeEach( function () {
@@ -22,7 +22,7 @@ describe("E2E Testing for Contact App", function(){
         expect(contactPageObjects.nameInput).not.toBe(null);
         expect(contactPageObjects.addressInput).not.toBe(null);
         expect(contactPageObjects.phoneInput).not.toBe(null);   
-        expect(contactPageObjects.modalWindowActionTitle()).toBe("Add Contact");  
+        expect(contactPageObjects.modalWindowActionTitle()).toBe('Add Contact');  
     });  
 
     it('Should close modal', function(){
@@ -30,13 +30,13 @@ describe("E2E Testing for Contact App", function(){
         contactPageObjects.closeModal();          
         
         expect(contactPageObjects.modalWindow.isPresent()).toBeFalsy();      
-    })  
+    });  
 
     it('UPDATE Contact form\'s available', function(){
         var firstThumbnail = contactPageObjects.findFirstContact();
         firstThumbnail.findElement(By.className('contactDiv')).click();
 
-        expect(contactPageObjects.modalWindowActionTitle()).toBe("Contact Details");
+        expect(contactPageObjects.modalWindowActionTitle()).toBe('Contact Details');
     }); 
 
     it('Open DELETE contact modal', function(){
@@ -44,5 +44,5 @@ describe("E2E Testing for Contact App", function(){
         firstThumbnail.findElement(By.className('glyphicon-trash')).click(); 
 
         expect(contactPageObjects.modalDelete.isPresent()).toBeTruthy();
-    })
+    });
 });

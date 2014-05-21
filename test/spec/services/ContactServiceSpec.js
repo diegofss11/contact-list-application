@@ -46,7 +46,7 @@ describe('ContactService - Testing CRUD Operations', function(){
                 name: 'John Lima',
                 address: 'Replace Avenue',
                 phone: '2555712'
-            }
+            };
 
         httpBackend.whenDELETE(BASE_URL + '/contacts/' + contactToDelete._id).respond(CONTACTS_MOCK);
         
@@ -73,7 +73,7 @@ describe('ContactService - Testing CRUD Operations', function(){
                 name: 'New Contact',
                 address: 'New Address',
                 phone: 'New Phone'
-            }
+            };
         
         httpBackend.whenPOST(BASE_URL + '/contacts', newContact).respond(CONTACTS_MOCK);
         
@@ -98,7 +98,7 @@ describe('ContactService - Testing CRUD Operations', function(){
                 name: 'Diego Freitas Siqueira Souza',
                 address: 'Congo Street',
                 phone: '553188848176'
-            }
+            };
         
         httpBackend.whenPUT(BASE_URL + '/contacts/' + contactToUpdate._id, contactUpdated).respond(CONTACTS_MOCK);
         
@@ -116,4 +116,4 @@ describe('ContactService - Testing CRUD Operations', function(){
         expect(result.indexOf(contactToUpdate)).toEqual(-1);
         expect(result.indexOf(contactUpdated)).not.toEqual(-1);     
     });
-})
+});

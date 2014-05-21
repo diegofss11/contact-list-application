@@ -1,0 +1,26 @@
+{
+	"curly": true,
+	"node": true,
+	"eqeqeq": true,
+	"browser": true,
+	"unused": true,
+	"indent": 4,
+	"camelcase": true,	
+	"smarttabs": true,
+	"quotmark": "single",
+	"devel": true,
+	"immed": true,
+	"undef": true,
+	"globals": {
+		"angular": false,
+		"expect": false,
+		"it": false,
+		"beforeEach": false,
+		"afterEach": false,
+		"describe": false,
+		"browser": false,
+		"By": false,
+		"element": false,
+		"inject": false		
+	}
+}
