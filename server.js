@@ -3,16 +3,26 @@ var express = require('express'),
 	mongoose = require('mongoose'),
 	database = require('./config/utils'),
 	bodyParser = require('body-parser'),
-	cors = require('cors');
+	env = process.env.NODE_ENV = process.env.NODE_ENV || 'development', //dev or prod,
+	port = process.env.PORT || 3030,
+	db;
 
+//setting up
+app.set('port', port);
+
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser()); //To extract params from the body of the requests
-app.use(cors()); //enabling CORS
+app.use(bodyParser());
+
+app.listen(port, function(){
+	console.log('Listening on port ' + port);
+});
 
 
-//connecting database	
-mongoose.connect(database.CONNECTION_URL); 
+//connecting database
+mongoose.connect(database.CONNECTION_URL);
 mongoose.set('debug', true);
-var db = mongoose.connection;
+db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error: '));
 
@@ -23,12 +33,12 @@ db.once('open', function callback () {
 		address: String,
 		phone: String
 	}, {collection: 'Contact'});
-	
+
 	//defining model
 	var Contact = mongoose.model('Contact', contactSchema);
 
 	// ********************** express ROUTERS - RESTFUL
-	
+
 	app.get('/', function(req, res) {
   		res.send('please select a collection, e.g., /contacts')
 	})
@@ -37,18 +47,18 @@ db.once('open', function callback () {
 	app.get('/contacts', function(req, res){
 		Contact.find(function (err, contacts){
 			console.log("Finding all Contacts");
-			if (err) return res.send(err)		
-			res.json(contacts);		
+			if (err) return res.send(err)
+			res.json(contacts);
 		})
-	});	
+	});
 
 	//FIND BY ID
 	app.get('/contacts/:id', function(req, res){
 		Contact.findById(req.params.id, function (err, contact){
   			console.log("Finding contact id:" + req.params.id);
-  			if (err) return res.send(err)		
-			res.json(contact);	
-		})		
+  			if (err) return res.send(err)
+			res.json(contact);
+		})
 	});
 
 	//CREATE
@@ -83,24 +93,20 @@ db.once('open', function callback () {
 		      }
 		      return res.send(contact);
 		    });
-  		});  		
+  		});
 	});
-	
+
 	//DELETE
 	app.delete('/contacts/:id', function (req, res) {
 		return Contact.findById(req.params.id, function (err, contact) {
     		return contact.remove(function (err) {
       			if (!err) {
-       				console.log("Contact removed");
-        			return res.send('');
-      			} else {
-        			console.log(err);
-      			}
-    		});
+     				console.log("Contact removed");
+      			return res.send('');
+    			} else {
+      			console.log(err);
+    			}
+  			});
     	});
-    });		
-});
-
-app.listen(3000, function(){
-	console.log('Listening on port 3000');
+    });
 });

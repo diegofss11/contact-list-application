@@ -1,3 +1,3 @@
 module.exports = {
-	CONNECTION_URL: 'mongodb://admin:admin@oceanic.mongohq.com:10056/contactList_db',
+	CONNECTION_URL: 'mongodb://admin:admin@ds039261.mongolab.com:39261/contact_list'
 }

@@ -1,0 +1,29 @@
+<!-- ACTION BAR -->
+<div class="action-bar clearfix">
+	<a class="glyphicon glyphicon-plus add-contact" href="javascript:void(0);" ng-click="vmDashboard.openCreateContactModal()">
+		<span>Contact</span>
+	</a>
+	<div class="filter-box pull-right">
+		<span>Filter:</span>
+		<input class="search-bar form-control" ng-model="search.name" type="text">
+	</div>
+</div>
+
+<div save-message action="{{ vmDashboard.actionMode }}" ng-show="vmDashboard.hasAlertVisible"></div>
+<div class="main-content">
+	<div ng-repeat="contact in vmDashboard.contacts | orderBy:'name' | filter:search">
+		<div class="col-sm-4 col-md-3">
+    		<div class="thumbnail contactDiv" ng-click="vmDashboard.contactAction(contact)">
+    			<div class="header">
+    				<span class="glyphicon glyphicon-user"></span>
+    				<span class="nameTitle">{{ contact.name }}</span>
+    			</div>
+				<div class="caption contactDetail">
+					<div class="phoneDetail pull-left glyphicon glyphicon-earphone">{{ contact.name }}</div>
+					<div class="addressDetail pull-left glyphicon glyphicon-screenshot">{{ contact.address }}</div>
+					<a class="pull-right glyphicon glyphicon-trash" ng-click="vmDashboard.deleteContact($event, contact)"></a>
+				</div>    			
+    		</div>
+ 		</div>
+ 	</div>  	
+</div>
