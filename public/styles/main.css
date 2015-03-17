@@ -2,17 +2,20 @@
 Error: File to import not found or unreadable: compass/css3.
        Load paths:
          
-        on line 1 of main.scss
+        on line 5 of main.scss
 
-1: @import "compass/css3";
-2: @import "modal";
-3: @import "form";
-4: @import "thumbnail";
-5: 
-6: .caption.contactDetail {
+1: /*------------------------------------*\
+2:     #OTHER CSS FILES MUST BE IMPORTED HERE
+3: \*------------------------------------*\/
+4: 
+5: @import "compass/css3";
+6: @import "modal";
+7: @import "form";
+8: @import "thumbnail";
+9: @import "container";
 
 Backtrace:
-main.scss:1
+main.scss:5
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.10/lib/sass/tree/import_node.rb:66:in `rescue in import'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.10/lib/sass/tree/import_node.rb:45:in `import'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.10/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -55,4 +58,4 @@ main.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: compass/css3.\A        Load paths:\A          \A         on line 1 of main.scss\A \A 1: @import \"compass/css3\";\A 2: @import \"modal\";\A 3: @import \"form\";\A 4: @import \"thumbnail\";\A 5: \A 6: .caption.contactDetail {"; }
+  content: "Error: File to import not found or unreadable: compass/css3.\A        Load paths:\A          \A         on line 5 of main.scss\A \A 1: /*------------------------------------*\\A 2:     #OTHER CSS FILES MUST BE IMPORTED HERE\A 3: \*------------------------------------*/\A 4: \A 5: @import \"compass/css3\";\A 6: @import \"modal\";\A 7: @import \"form\";\A 8: @import \"thumbnail\";\A 9: @import \"container\";"; }

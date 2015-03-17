@@ -1,0 +1,97 @@
+/*------------------------------------*\
+    #CONTAINERS
+\*------------------------------------*/
+
+.required::after {
+  color: red;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.searchBar {
+  width: 300px;
+  margin-left: 3px;
+  height: 27px;
+}
+
+.container-fluid {
+  padding-top: 70px;
+
+  .header {
+    background-color: #428bca;
+  }
+
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.2);
+    padding: 16px;
+    height: 55px;
+  }
+
+  footer {
+    padding-top: 20px;
+    border-top: 1px solid black;
+    posiion: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    margin: 50px 0;
+  }
+
+  .main-header {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #31708f;
+  }
+
+  .action-bar {
+    padding: 14px;
+
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    span {
+      font-weight: 600;
+    }
+
+    .search-bar {
+      display: inline-block;
+      width: 300px;
+      padding: 6px;
+      margin-left: 5px;
+    }
+  }
+
+  .main-content {
+    min-height: 300px;
+    padding-top: 30px;
+
+  }
+
+  .add-contact {
+    display: inline-block;
+    font-size: 16px;
+
+    &::before {
+      font-size: 20px;
+      line-height: 20px;
+      vertical-align: middle;
+    }
+
+    & > span {
+      padding-left: 8px;
+    }
+  }
+}
+
+.searchBarContainer {
+  padding: 15px 5px 15px 0px;
+}
