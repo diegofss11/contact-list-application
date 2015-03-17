@@ -6,10 +6,10 @@ Error: File to import not found or unreadable: compass/css3.
 
 1: @import "compass/css3";
 2: @import "modal";
-3: 
-4: .caption.contactDetail {
-5:   height: 80px;
-6:   margin-top: 5px;
+3: @import "form";
+4: @import "thumbnail";
+5: 
+6: .caption.contactDetail {
 
 Backtrace:
 main.scss:1
@@ -55,4 +55,4 @@ main.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: compass/css3.\A        Load paths:\A          \A         on line 1 of main.scss\A \A 1: @import \"compass/css3\";\A 2: @import \"modal\";\A 3: \A 4: .caption.contactDetail {\A 5:   height: 80px;\A 6:   margin-top: 5px;"; }
+  content: "Error: File to import not found or unreadable: compass/css3.\A        Load paths:\A          \A         on line 1 of main.scss\A \A 1: @import \"compass/css3\";\A 2: @import \"modal\";\A 3: @import \"form\";\A 4: @import \"thumbnail\";\A 5: \A 6: .caption.contactDetail {"; }

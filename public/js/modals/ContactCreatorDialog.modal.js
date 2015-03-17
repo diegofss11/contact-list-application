@@ -3,7 +3,7 @@
 
 	function ContactCreatorDialog(btfModal) {
 		return btfModal({
-			controller: 'ContactModalInstanceController',
+			controller: 'ContactModal',
 			controllerAs: 'vmContactModal',
 			templateUrl: 'views/FormContact.tpl.html'
 		});

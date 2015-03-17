@@ -1,68 +1,12 @@
 /*------------------------------------*\
     #MODAL
 \*------------------------------------*/
-.modal-template {
-  bottom: 0;
-  top: 0;
-  right: 0;
-  left: 0;
-  overflow: hidden;
-  position: fixed;
-  z-index: 100;
-}
+.modal-title {
+  display: inline-block;
 
-.modal-overlay {
-  background-color: black;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  opacity: 0.12;
-}
-
-.modal-dialog {
-  @include border-radius(5px);
-
-  position: relative;
-  width: 500px;
-  background-color: #f5f5f5;
-  box-shadow: 0px 27px 24px 0 rgba(0, 0, 0, 0.2);
-}
-
-.modal-header {
-  min-height: 18px;
-  padding: 20px;
-  background-color: #90a4ae;
-  border-bottom: 1px solid #d5d5d5;
-  color: white;
-  font-weight: 700px;
-}
-
-.modal-transclude {
-  padding: 20px;
-
-  .modal-footer {
-    padding: 15px 0;
-  }
-}
-
-.modal-register-user {
-  .modal-footer {
-    .btn {
-      width: 48%;
-    }
-  }
-}
-
-.modal-delete-tournament,
-.modal-create-tournament {
-  .modal-footer {
-    margin-top: 30px;
-
-    .btn {
-      margin: 0 !important;
-      width: 48%;
-    }
+  .close {
+    float: right;
+    font-size: 21px;
+    cursor: pointer;
   }
 }

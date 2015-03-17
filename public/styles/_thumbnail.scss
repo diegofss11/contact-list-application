@@ -1,0 +1,42 @@
+/*------------------------------------*\
+    #THUMBNAIL
+\*------------------------------------*/
+
+.required::after {
+  color: red;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.thumbnail.contact {
+
+  .thumbnail-header {
+    padding: 5px;
+  }
+
+  .thumbnail-title {
+    font-weight: 600;
+  }
+
+  .thumbnail-details {
+    padding: 20px 5px 5px;
+    width: 100%;
+  }
+
+  .glyphicon-earphone,
+  .glyphicon-screenshot,
+  .glyphicon-user {
+    font-style: 18px;
+    padding-right: 10px;
+  }
+
+  .address-detail {
+    display: inline-block;
+  }
+
+  .phone-detail {
+    display: block;
+    padding-bottom: 15px;
+  }
+
+}

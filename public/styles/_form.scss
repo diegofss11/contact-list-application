@@ -1,0 +1,15 @@
+/*------------------------------------*\
+    #FORM
+\*------------------------------------*/
+
+.required::after {
+  color: red;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.searchBar {
+  width: 300px;
+  margin-left: 3px;
+  height: 27px;
+}

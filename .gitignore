@@ -1,5 +1,5 @@
 node_modules/
-bower_components/
+public/vendor/
 dist
 .sass-cache
 .idea

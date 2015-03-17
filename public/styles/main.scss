@@ -1,5 +1,7 @@
 @import "compass/css3";
 @import "modal";
+@import "form";
+@import "thumbnail";
 
 .caption.contactDetail {
   height: 80px;
@@ -9,6 +11,7 @@
 .contactDiv a {
   color: black;
   padding-top: 18px;
+
   &:hover {
     color: red;
     font-size: 21px;
@@ -42,12 +45,6 @@
   padding: 15px 5px 15px 0px;
 }
 
-.searchBar {
-  width: 300px;
-  margin-left: 3px;
-  height: 27px;
-}
-
 .contactDiv:hover {
   cursor: pointer;
   background-color: #e7e7ed;
@@ -61,19 +58,8 @@
   color: white;
 }
 
-.modalTitle h4 {
-  font-weight: bold;
-  text-align: center;
-}
-
 .glyphicon-user {
   font-size: 20px;
-}
-
-.required {
-  color: red;
-  font-weight: bold;
-  font-size: 18px;
 }
 
 #navbarCollapse .addContact:hover {
@@ -86,21 +72,6 @@
 
 #contactForm .btn:hover, .modal-header .close:hover {
   font-weight: bold;
-}
-
-.modal-body .notifyModal {
-  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  position: relative;
-  background-color: #fff;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-  background-clip: padding-box;
-  outline: 0;
-  box-sizing: border-box;
 }
 
 .addressDetail {
@@ -209,7 +180,6 @@ footer {
   padding: 14px;
 
   a {
-
     &:hover {
       text-decoration: none;
     }
@@ -229,6 +199,7 @@ footer {
 
 .main-content {
   min-height: 300px;
+  padding-top: 30px;
 
 }
 
