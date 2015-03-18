@@ -2,13 +2,14 @@
     'use strict';
 
     function DashboardController($timeout, ContactCreatorDialog, ContactService) {
-        var _self = this;
+        var _self = this,
+            promise;
 
         _self.hasAlertVisible = false;
         _self.openCreateContactModal = ContactCreatorDialog.activate;
 
-         _self.findAll = function () {
-             var promise = ContactService.findAll();
+         _self.findAll = function() {
+             promise = ContactService.findAll();
 
              promise.then(
                  function (contacts) {

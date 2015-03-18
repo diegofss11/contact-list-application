@@ -2,60 +2,45 @@
     #CONTAINERS
 \*------------------------------------*/
 
-.required::after {
-  color: red;
-  font-weight: bold;
-  font-size: 18px;
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #00bcd4;
+
+  padding: 16px;
+  min-height: 55px;
+
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
 }
 
-.searchBar {
-  width: 300px;
-  margin-left: 3px;
-  height: 27px;
+footer {
+  posiion: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  border-top: 1px solid black;
+
+  height: 50px;
+  margin: 50px 0;
+  padding-top: 20px;
 }
+
 
 .container-fluid {
   padding-top: 70px;
 
-  .header {
-    background-color: #428bca;
-  }
-
-  header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0,0,0,0.2);
-    padding: 16px;
-    height: 55px;
-  }
-
-  footer {
-    padding-top: 20px;
-    border-top: 1px solid black;
-    posiion: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
-    margin: 50px 0;
-  }
-
-  .main-header {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 24px;
-    color: #31708f;
-  }
-
   .action-bar {
     padding: 14px;
 
-    a {
-      &:hover {
-        text-decoration: none;
-      }
+    a:hover {
+      text-decoration: none;
     }
 
     span {
@@ -73,15 +58,20 @@
   .main-content {
     min-height: 300px;
     padding-top: 30px;
-
   }
 
   .add-contact {
+    color: #0288d1;
     display: inline-block;
     font-size: 16px;
+    line-height: 28px;
+
+    &:hover {
+      color: #01579b;
+    }
 
     &::before {
-      font-size: 20px;
+       font-size: 20px;
       line-height: 20px;
       vertical-align: middle;
     }
@@ -90,8 +80,5 @@
       padding-left: 8px;
     }
   }
-}
 
-.searchBarContainer {
-  padding: 15px 5px 15px 0px;
 }

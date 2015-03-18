@@ -2,15 +2,12 @@
     #THUMBNAIL
 \*------------------------------------*/
 
-.required::after {
-  color: red;
-  font-weight: bold;
-  font-size: 18px;
-}
-
 .thumbnail.contact {
+  padding: 0;
 
   .thumbnail-header {
+    background-color: #e1f5fe;
+    border-bottom: 1px solid #bdbdbd;
     padding: 5px;
   }
 
@@ -19,15 +16,31 @@
   }
 
   .thumbnail-details {
+    background-color: #f5f5f5;
     padding: 20px 5px 5px;
     width: 100%;
   }
 
   .glyphicon-earphone,
   .glyphicon-screenshot,
+  .glyphicon-trash,
   .glyphicon-user {
-    font-style: 18px;
+    font-size: 18px;
     padding-right: 10px;
+  }
+
+  .glyphicon-trash {
+    padding-right: 0;
+
+    &:before {
+      cursor: pointer;
+      color: #9e9e9e;
+      padding-right: 0;
+
+      &:hover {
+        color: #d32f2f;
+      }
+    }
   }
 
   .address-detail {

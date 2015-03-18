@@ -2,10 +2,11 @@
 	'use strict';
 
 	function ContactService($http, $q, config) {
-		var _self = this;
+		var _self = this,
+			deferred;
 
 		_self.findAll = function () {
-			var deferred = $q.defer(); //deferred represents a task that will be done in the future
+			deferred = $q.defer(); //deferred represents a task that will be done in the future
 
 			$http.get(config.BASE_URL + '/contacts')
 				.success(function (data) {
@@ -15,12 +16,13 @@
 					console.log('Error loading Contacts: ' + data);
 					deferred.reject(data);
 				});
+
 			return deferred.promise;
 		};
 
 		_self.saveContact = function (contact) {
 			if (contact._id === undefined) {
-				var deferred = $q.defer();
+				deferred = $q.defer();
 
 				$http.post(config.BASE_URL + '/contacts', contact)
 					.success(function (data) {
@@ -39,7 +41,7 @@
 		};
 
 		_self.updateContact = function (contact) {
-			var deferred = $q.defer();
+			deferred = $q.defer();
 
 			$http.put(config.BASE_URL + '/contacts/' + contact._id, contact)
 				.success(function (data) {
@@ -54,7 +56,7 @@
 		};
 
 		_self.deleteContact = function (contact) {
-			var deferred = $q.defer();
+			deferred = $q.defer();
 
 			$http.delete(config.BASE_URL + '/contacts/' + contact._id)
 				.success(function (data) {

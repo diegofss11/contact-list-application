@@ -4,9 +4,7 @@ module.exports = function( grunt ) {
 
 		karma: {
 	        unit: {
-	            configFile: 'test/karma.config.js',
-	            runnerPort: 9876,
-	            browsers: [ 'Chrome' ]
+	            configFile: 'config/karma.config.js'
 	        }
 	    },
 	    protractor: {
@@ -150,10 +148,10 @@ module.exports = function( grunt ) {
 	grunt.registerTask('default', ['clean', 'html2js', 'compass', 'injector', 'watch']);
 
 	//GRUNT TEST-KARMA
-	grunt.registerTask('test-karma', ['karma']);
+	grunt.registerTask('test', ['html2js', 'karma']);
 	
 	//GRUNT TEST-PROTRACTOR
-	grunt.registerTask('test-protractor', ['protractor']);
+	grunt.registerTask('test-ui', ['protractor']);
 	
 	//GRUNT SASS
 	grunt.registerTask('sass', ['compass:dev']);
