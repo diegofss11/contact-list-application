@@ -31,15 +31,12 @@
 
   .glyphicon-trash {
     padding-right: 0;
+    color: #9e9e9e;
+    cursor: pointer;
+    padding-right: 0;
 
-    &:before {
-      cursor: pointer;
-      color: #9e9e9e;
-      padding-right: 0;
-
-      &:hover {
-        color: #d32f2f;
-      }
+    &:hover {
+      color: #d32f2f;
     }
   }
 

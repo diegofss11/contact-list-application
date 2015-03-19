@@ -1,16 +1,18 @@
-<div class="btf-modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Delete contact</h4>
-                <span class="glyphicon glyphicon-remove close" ng-click="vmConfirmationModal.close()"></span>
-            </div>
-            <div class="modal-body">
-                Are you sure do you want to delete <b>{{ vmConfirmationModal.contact.name }}?
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" ng-click="vmConfirmationModal.delete()">Delete</button>
-                <button class="btn btn-secondary" ng-click="vmConfirmationModal.close()">Cancel</button>
+<div class="modal fade in">
+    <div class="btf-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete contact</h4>
+                    <span class="glyphicon glyphicon-remove close" ng-click="vmConfirmationModal.close()"></span>
+                </div>
+                <div class="modal-body">
+                    Are you sure do you want to delete <b>{{ vmConfirmationModal.contact.name }}</b>?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="vmConfirmationModal.delete()">Delete</button>
+                    <button class="btn btn-default" ng-click="vmConfirmationModal.close()">Cancel</button>
+                </div>
             </div>
         </div>
     </div>

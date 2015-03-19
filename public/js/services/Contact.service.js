@@ -6,7 +6,7 @@
 			deferred;
 
 		_self.findAll = function () {
-			deferred = $q.defer(); //deferred represents a task that will be done in the future
+			deferred = $q.defer();
 
 			$http.get(config.BASE_URL + '/contacts')
 				.success(function (data) {

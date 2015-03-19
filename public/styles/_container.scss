@@ -8,7 +8,7 @@ header {
   left: 0;
   right: 0;
 
-  color: rgba(255, 255, 255, 0.87);
+  color: white;
   background-color: #00bcd4;
 
   padding: 16px;
@@ -80,5 +80,8 @@ footer {
       padding-left: 8px;
     }
   }
+}
 
+.box-depth {
+  @include box-shadow(rgba(0, 0, 0, 0.24) 0 2px 4px);
 }

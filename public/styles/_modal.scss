@@ -1,6 +1,14 @@
 /*------------------------------------*\
     #MODAL
 \*------------------------------------*/
+.modal {
+  background-color: rgba(0,0,0,0.4);
+  display: block;
+}
+
+.btf-modal {
+  max-width: none;
+}
 
 .modal-title {
   display: inline-block;
