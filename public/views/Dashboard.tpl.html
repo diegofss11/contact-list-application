@@ -9,7 +9,7 @@
 	</div>
 </div>
 
-<div save-message action="{{ vmDashboard.actionMode }}" ng-show="vmDashboard.hasAlertVisible"></div>
+<div class="alert-message" ng-if="vmDashboard.alertMessage">{{ vmDashboard.alertMessage }}</div>
 <div class="main-content">
 	<div ng-repeat="contact in vmDashboard.contacts | orderBy:'name' | filter:search">
 		<div class="col-sm-4 col-md-3" thumbnail-information="contact"></div>

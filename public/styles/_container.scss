@@ -85,3 +85,26 @@ footer {
 .box-depth {
   @include box-shadow(rgba(0, 0, 0, 0.24) 0 2px 4px);
 }
+
+.alert-message {
+  background-color: #B9F6CA;
+  display: inline-block;
+  border: 1px solid #69F0AE;
+  padding: 12px;
+  width: 100%;
+  font-weight: 600;
+
+  &.ng-enter, &.ng-leave {
+    @include opacity(0.5);
+  }
+
+  &.ng-enter,
+  &.ng-leave.ng-leave-active {
+    opacity:0;
+  }
+
+  &.ng-leave,
+  &.ng-enter.ng-enter-active {
+    opacity:1;
+  }
+}

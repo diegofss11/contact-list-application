@@ -1,8 +1,9 @@
 (function() {
 	'use strict';
 
-	function ContactModal(ContactCreatorDialog, ContactService) {
-		var _self = this;
+	function ContactModal($rootScope, ContactCreatorDialog, ContactService) {
+		var _self = this,
+			promise;
 
 		_self.close = ContactCreatorDialog.deactivate;
 
@@ -28,13 +29,19 @@
 		};
 
 		_self.saveContact = function () {
-			ContactService.saveContact(_self.newContact).then(function(result) {
-				_self.close();
+			promise = ContactService.saveContact(_self.newContact);
+
+			promise.then(function(result) {
+				ContactService.findAll();
+
+				_self.close().then(function(){
+					$rootScope.$broadcast('saveContact', _self.newContact);
+				});
 			});
 		};
 	}
 
-	ContactModal.$inject = ['ContactCreatorDialog', 'ContactService'];
+	ContactModal.$inject = ['$rootScope', 'ContactCreatorDialog', 'ContactService'];
 
 	angular.module('contactListApp')
 		.controller('ContactModal', ContactModal);

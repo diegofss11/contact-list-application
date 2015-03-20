@@ -3,36 +3,39 @@
 
 	function ContactService($http, $q, config) {
 		var _self = this,
-			deferred;
+			promise, deferred;
+
+		_self.contacts = [];
 
 		_self.findAll = function () {
 			deferred = $q.defer();
 
-			$http.get(config.BASE_URL + '/contacts')
-				.success(function (data) {
-					deferred.resolve(data);
-				})
-				.error(function (data) {
-					console.log('Error loading Contacts: ' + data);
-					deferred.reject(data);
-				});
+			promise = $http.get(config.BASE_URL + '/contacts');
 
-			return deferred.promise;
+			return promise.then(function (result) {
+				angular.copy(result.data, _self.contacts);
+			}, function(error) {
+				console.log('Error loading Contacts: ' + data);
+			});
 		};
 
 		_self.saveContact = function (contact) {
 			if (contact._id === undefined) {
 				deferred = $q.defer();
 
-				$http.post(config.BASE_URL + '/contacts', contact)
-					.success(function (data) {
-						data.action = 'saved';
-						deferred.resolve(data);
-					})
-					.error(function (data) {
-						console.log('Error saving Contact: ' + data);
-						deferred.reject(data);
-					});
+				promise = $http.post(config.BASE_URL + '/contacts', contact);
+
+				promise.success(function (data) {
+					data.action = 'saved';
+					deferred.resolve(data);
+				})
+				.error(function (data) {
+					console.log('Error saving Contact: ' + data);
+					deferred.reject(data);
+				});
+
+				_self.findAll();
+
 				return deferred.promise;
 			}
 			else {
@@ -43,30 +46,33 @@
 		_self.updateContact = function (contact) {
 			deferred = $q.defer();
 
-			$http.put(config.BASE_URL + '/contacts/' + contact._id, contact)
-				.success(function (data) {
-					data.action = 'updated';
-					deferred.resolve(data);
-				})
-				.error(function (data) {
-					console.log('Error updating Contact: ' + data);
-					deferred.reject(data);
-				});
+			promise = $http.put(config.BASE_URL + '/contacts/' + contact._id, contact);
+
+			promise.success(function (data) {
+				data.action = 'updated';
+				deferred.resolve(data);
+			})
+			.error(function (data) {
+				console.log('Error updating Contact: ' + data);
+				deferred.reject(data);
+			});
+
 			return deferred.promise;
 		};
 
 		_self.deleteContact = function (contact) {
 			deferred = $q.defer();
 
-			$http.delete(config.BASE_URL + '/contacts/' + contact._id)
-				.success(function (data) {
-					data.action = 'deleted';
-					deferred.resolve(data);
-				})
-				.error(function (data) {
-					console.log('Error deleting Contact: ' + data);
-					deferred.reject(data);
-				});
+			promise = $http.delete(config.BASE_URL + '/contacts/' + contact._id);
+
+			promise.success(function (data) {
+				data.action = 'deleted';
+				deferred.resolve(data);
+			})
+			.error(function (data) {
+				console.log('Error deleting Contact: ' + data);
+				deferred.reject(data);
+			});
 
 			return deferred.promise;
 		};
