@@ -34,5 +34,4 @@
 
     angular.module('contactListApp')
         .controller('DashboardController', DashboardController);
-
 })();

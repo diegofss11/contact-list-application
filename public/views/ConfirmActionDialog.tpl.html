@@ -4,14 +4,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete contact</h4>
-                    <span class="glyphicon glyphicon-remove close" ng-click="vmConfirmationModal.close()"></span>
+                    <span class="glyphicon glyphicon-remove close" ng-click="vmConfirmationAction.close()"></span>
                 </div>
                 <div class="modal-body">
                     Are you sure do you want to delete <b>{{ contact.name }}</b>?
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" ng-click="vmConfirmationModal.delete()">Delete</button>
-                    <button class="btn btn-default" ng-click="vmConfirmationModal.close()">Cancel</button>
+                    <button class="btn btn-primary" ng-click="vmConfirmationAction.delete()">Delete</button>
+                    <button class="btn btn-default" ng-click="vmConfirmationAction.close()">Cancel</button>
                 </div>
             </div>
         </div>

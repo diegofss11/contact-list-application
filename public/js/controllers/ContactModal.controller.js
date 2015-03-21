@@ -45,5 +45,4 @@
 
 	angular.module('contactListApp')
 		.controller('ContactModal', ContactModal);
-
 })();

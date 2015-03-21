@@ -1,11 +1,11 @@
 (function() {
 	'use strict';
 
-	function ConfirmationModal($scope, $rootScope, ConfirmationDialog, ContactService) {
+	function ConfirmationAction($scope, $rootScope, ConfirmationActionDialog, ContactService) {
 		var _self = this,
 			promise;
 
-		_self.close = ConfirmationDialog.deactivate;
+		_self.close = ConfirmationActionDialog.deactivate;
 
 		_self.delete = function () {
 			promise = ContactService.deleteContact($scope.contact);
@@ -17,8 +17,8 @@
 		};
 	}
 
-	ConfirmationModal.$inject = ['$scope', '$rootScope', 'ConfirmationDialog', 'ContactService'];
+	ConfirmationAction.$inject = ['$scope', '$rootScope', 'ConfirmationActionDialog', 'ContactService'];
 
 	angular.module('contactListApp')
-		.controller('ConfirmationModal', ConfirmationModal);
+		.controller('ConfirmationAction', ConfirmationAction);
 })();
