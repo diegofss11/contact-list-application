@@ -12,6 +12,6 @@
             <i class="glyphicon glyphicon-screenshot"></i>
             {{ contact.address }}
         </span>
-        <i class="pull-right glyphicon glyphicon-trash" ng-click="vmThumbnail.openConfirmationModal({ contact : contact })"></i>
+        <i class="pull-right glyphicon glyphicon-trash" ng-click="vmThumbnail.openConfirmationModal({ contact : contact }); $event.stopPropagation();"></i>
     </div>
 </div>

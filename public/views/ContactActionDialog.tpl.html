@@ -3,7 +3,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Create</h4>
+                    <h4 class="modal-title">{{ !!updatedContact ? 'Update' : 'Create' }} Contact</h4>
                     <span class="glyphicon glyphicon-remove close" ng-click="vmContactModal.close()"></span>
                 </div>
                 <span ng-switch on="!!updatedContact">
