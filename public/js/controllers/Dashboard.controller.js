@@ -20,6 +20,14 @@
                 _self.alertMessage = undefined;
             }, 3000);
         });
+
+        $scope.$on('deleteContact', function(event, data) {
+            _self.alertMessage = 'Contact ' + data.name + ' was deleted successfully';
+
+            $timeout(function() {
+                _self.alertMessage = undefined;
+            }, 3000);
+        });
     }
 
     DashboardController.$inject = ['$scope', '$timeout', 'ContactCreatorDialog', 'ContactService'];

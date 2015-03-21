@@ -45,18 +45,24 @@ db.once('open', function callback () {
 
 	//FIND ALL
 	app.get('/contacts', function(req, res){
-		Contact.find(function (err, contacts){
+		Contact.find(function (error, contacts){
 			console.log("Finding all Contacts");
-			if (err) return res.send(err)
+
+			if (error) {
+				return res.send(error);
+			}
 			res.json(contacts);
 		})
 	});
 
 	//FIND BY ID
 	app.get('/contacts/:id', function(req, res){
-		Contact.findById(req.params.id, function (err, contact){
+		Contact.findById(req.params.id, function (error, contact){
   			console.log("Finding contact id:" + req.params.id);
-  			if (err) return res.send(err)
+
+			if (error) {
+				return res.send(error);
+			}
 			res.json(contact);
 		})
 	});
@@ -67,13 +73,17 @@ db.once('open', function callback () {
 			name : req.body.name,
 			address : req.body.address,
 			phone: req.body.phone
-		}, function(err, contact) {
-			if (err)
-				res.send(err);
-			// get and return all the contacts after you create another
-			Contact.find(function(err, contacts) {
-				if (err)
-					res.send(err)
+		}, function(error, contact) {
+
+			if (error) {
+				res.send(error);
+			}
+			Contact.find(function(error, contacts) {
+
+				if (error) {
+					res.send(error);
+				}
+
 				res.json(contacts);
 			});
 		});
@@ -98,15 +108,22 @@ db.once('open', function callback () {
 
 	//DELETE
 	app.delete('/contacts/:id', function (req, res) {
-		return Contact.findById(req.params.id, function (err, contact) {
-    		return contact.remove(function (err) {
-      			if (!err) {
-     				console.log("Contact removed");
-      			return res.send('');
-    			} else {
-      			console.log(err);
-    			}
-  			});
+		Contact.findById(req.params.id, function (err, contact) {
+    		contact.remove(function (error) {
+
+				if (error) {
+					console.log(error);
+					res.json(error);
+      			}
+				console.log("Contact removed");
+				Contact.find(function(error, contacts) {
+
+					if (error) {
+						res.send(error);
+					}
+					res.json(contacts);
+				});
+			});
     	});
     });
 });

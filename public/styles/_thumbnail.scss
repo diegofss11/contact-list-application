@@ -5,6 +5,11 @@
 .thumbnail.contact {
   padding: 0;
 
+  &:hover {
+    @include box-shadow(rgba(0, 0, 0, 0.70) 0 2px 4px);
+    cursor: pointer;
+  }
+
   .thumbnail-header {
     background-color: #e1f5fe;
     border-bottom: 1px solid #bdbdbd;

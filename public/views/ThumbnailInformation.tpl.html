@@ -1,4 +1,4 @@
-<div class="thumbnail contact clearfix box-depth" ng-click="vmThumbnail.contactAction(contact)">
+<div class="thumbnail contact clearfix box-depth" ng-click="vmThumbnail.showInfo(contact)">
     <div class="thumbnail-header">
         <i class="glyphicon glyphicon-user"></i>
         <span class="thumbnail-title">{{ contact.name }}</span>
@@ -12,6 +12,6 @@
             <i class="glyphicon glyphicon-screenshot"></i>
             {{ contact.address }}
         </span>
-        <i class="pull-right glyphicon glyphicon-trash" ng-click="vmThumbnail.openConfirmationModal({contact : contact})"></i>
+        <i class="pull-right glyphicon glyphicon-trash" ng-click="vmThumbnail.openConfirmationModal({ contact: contact })"></i>
     </div>
 </div>

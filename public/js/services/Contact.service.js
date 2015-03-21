@@ -65,16 +65,11 @@
 
 			promise = $http.delete(config.BASE_URL + '/contacts/' + contact._id);
 
-			promise.success(function (data) {
-				data.action = 'deleted';
-				deferred.resolve(data);
-			})
-			.error(function (data) {
-				console.log('Error deleting Contact: ' + data);
-				deferred.reject(data);
+			return promise.then(function (result) {
+				angular.copy(result.data, _self.contacts);
+			}, function(error) {
+				console.log('Error deleting contacts: ' + error);
 			});
-
-			return deferred.promise;
 		};
 	}
 
