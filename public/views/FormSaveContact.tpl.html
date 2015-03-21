@@ -1,0 +1,25 @@
+<form name="contactForm" novalidate ng-submit="vmContactModal.saveContact()">
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="name" class="required">Name</label>
+            <input name="name" class="form-control" ng-model="vmContactModal.newContact.name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address" class="required">Address</label>
+            <input name="address" class="form-control" ng-model="vmContactModal.newContact.address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone" class="required">Phone</label>
+            <input name="phone" class="form-control" ng-model="vmContactModal.newContact.phone" required>
+        </div>
+
+        <!-- hidden value -->
+        <input ng-show="false" ng-model="vmContactModal.newContact._id">
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Create</button>
+        <button class="btn btn-default" ng-click="vmContactModal.close()">Cancel</button>
+    </div>
+</form>

@@ -12,52 +12,37 @@
 
 			promise = $http.get(config.BASE_URL + '/contacts');
 
-			return promise.then(function (result) {
+			return promise.then(function(result) {
 				angular.copy(result.data, _self.contacts);
 			}, function(error) {
-				console.log('Error loading Contacts: ' + data);
+				console.log('Error loading Contacts: ' + error);
 			});
 		};
 
 		_self.saveContact = function (contact) {
-			if (contact._id === undefined) {
-				deferred = $q.defer();
+			deferred = $q.defer();
 
-				promise = $http.post(config.BASE_URL + '/contacts', contact);
+			promise = $http.post(config.BASE_URL + '/contacts', contact);
 
-				promise.success(function (data) {
-					data.action = 'saved';
-					deferred.resolve(data);
-				})
-				.error(function (data) {
-					console.log('Error saving Contact: ' + data);
-					deferred.reject(data);
-				});
-
-				_self.findAll();
-
-				return deferred.promise;
-			}
-			else {
-				return this.updateContact(contact);
-			}
+			return promise.then(function(result) {
+				angular.copy(result.data, _self.contacts);
+			}, function(error) {
+				console.log('Error saving Contact: ' + error);
+			});
 		};
 
 		_self.updateContact = function (contact) {
-			deferred = $q.defer();
+			if (contact._id) {
+				deferred = $q.defer();
 
-			promise = $http.put(config.BASE_URL + '/contacts/' + contact._id, contact);
+				promise = $http.put(config.BASE_URL + '/contacts/' + contact._id, contact);
 
-			promise.success(function (data) {
-				data.action = 'updated';
-				deferred.resolve(data);
-			})
-			.error(function (data) {
-				console.log('Error updating Contact: ' + data);
-				deferred.reject(data);
-			});
-
-			return deferred.promise;
+				return promise.then(function (result) {
+					angular.copy(result.data, _self.contacts);
+				}, function (error) {
+					console.log('Error updating Contact: ' + error);
+				});
+			}
 		};
 
 		_self.deleteContact = function (contact) {

@@ -1,0 +1,22 @@
+<div class="modal fade in">
+    <div class="btf-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Create</h4>
+                    <span class="glyphicon glyphicon-remove close" ng-click="vmContactModal.close()"></span>
+                </div>
+                <span ng-switch on="!!updatedContact">
+                    <!-- SAVE VIEW -->
+                    <span ng-switch-when="false">
+                        <span ng-include="'views/FormSaveContact.tpl.html'"></span>
+                    </span>
+                    <!-- UPDATE VIEW -->
+                    <span ng-switch-when="true">
+                        <span ng-include="'views/FormUpdateContact.tpl.html'"></span>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

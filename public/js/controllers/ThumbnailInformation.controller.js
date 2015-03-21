@@ -1,17 +1,14 @@
 (function() {
 	'use strict';
 
-	function Thumbnail(ConfirmationActionDialog) {
+	function Thumbnail(ContactActionDialog, ConfirmationActionDialog) {
 		var _self = this;
 
 		_self.openConfirmationModal = ConfirmationActionDialog.activate;
-
-		_self.showDetail = function(contact) {
-
-		};
+		_self.openContactActionModal = ContactActionDialog.activate;
 	}
 
-	Thumbnail.$inject = ['ConfirmationActionDialog'];
+	Thumbnail.$inject = ['ContactActionDialog', 'ConfirmationActionDialog'];
 
 	angular.module('contactListApp')
 		.controller('Thumbnail', Thumbnail);

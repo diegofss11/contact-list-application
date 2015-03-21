@@ -1,0 +1,27 @@
+<form name="contactForm" novalidate ng-submit="vmContactModal.updateContact()">
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="name" class="required">Name</label>
+            <input ng-disabled="vmContactModal.isDisabled" name="name" class="form-control" ng-model="updatedContact.name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address" class="required">Address</label>
+            <input ng-disabled="vmContactModal.isDisabled" name="address" class="form-control" ng-model="updatedContact.address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone" class="required">Phone</label>
+            <input ng-disabled="vmContactModal.isDisabled" name="phone" class="form-control" ng-model="updatedContact.phone" required>
+        </div>
+
+        <!-- hidden value -->
+        <input ng-show="false" ng-model="vmContactModal.newContact._id">
+    </div>
+    <div class="modal-footer">
+        <button ng-if="vmContactModal.isDisabled" class="btn btn-primary edit" ng-click="vmContactModal.isDisabled = false;">Edit</button>
+        <button ng-if="!vmContactModal.isDisabled" class="btn btn-primary" type="submit">Update</button>
+
+        <button class="btn btn-default" ng-click="vmContactModal.cancel()">Cancel</button>
+    </div>
+</form>

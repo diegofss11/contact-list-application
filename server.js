@@ -41,7 +41,7 @@ db.once('open', function callback () {
 
 	app.get('/', function(req, res) {
   		res.send('please select a collection, e.g., /contacts')
-	})
+	});
 
 	//FIND ALL
 	app.get('/contacts', function(req, res){
@@ -91,17 +91,25 @@ db.once('open', function callback () {
 
 	//UPDATE
 	app.put('/contacts/:id', function (req, res){
-  		return Contact.findById(req.params.id, function (err, contact) {
+  		Contact.findById(req.params.id, function (err, contact) {
 		    contact.name = req.body.name;
 		    contact.address = req.body.address;
 		    contact.phone = req.body.phone;
-		    return contact.save(function (err) {
-		      if (!err) {
-		        console.log("updated");
-		      } else {
-		        console.log(err);
-		      }
-		      return res.send(contact);
+
+		    contact.save(function(error) {
+
+				if (error) {
+					console.log(error);
+				} else {
+					console.log('updated');
+					Contact.find(function(error, contacts) {
+
+						if (error) {
+							res.send(error);
+					  	}
+						res.json(contacts);
+				  	});
+				}
 		    });
   		});
 	});

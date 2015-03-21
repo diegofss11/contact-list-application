@@ -1,30 +1,18 @@
 (function() {
 	'use strict';
 
-	function ContactModal($rootScope, ContactCreatorDialog, ContactService) {
+	function ContactModal($scope, $rootScope, ContactActionDialog, ContactService) {
 		var _self = this,
 			promise;
 
-		_self.close = ContactCreatorDialog.deactivate;
+		_self.close = ContactActionDialog.deactivate;
+		_self.isDisabled = true;
 
-		_self.isEditable = function (isReadOnly) {
-			_self.isReadOnly = !isReadOnly;
-		};
-
-		_self.cancelAction = function (isReadOnly) {
-			if (_self.mode === 'add') {
-				//if is add Contact - cancel will exit
-				$modalInstance.dismiss('cancel');
-			}
-			else {
-				//go back to readyOnly mode
-				_self.contact = {
-					_id: items._id,
-					name: items.name,
-					phone: items.phone,
-					address: items.address
-				};
-				_self.isEditable(isReadOnly);
+		_self.cancel = function() {
+			if(_self.isDisabled) {
+				_self.close();
+			} else {
+				_self.isDisabled = true;
 			}
 		};
 
@@ -32,16 +20,24 @@
 			promise = ContactService.saveContact(_self.newContact);
 
 			promise.then(function(result) {
-				ContactService.findAll();
-
 				_self.close().then(function(){
 					$rootScope.$broadcast('saveContact', _self.newContact);
 				});
 			});
 		};
+
+		_self.updateContact = function () {
+			promise = ContactService.updateContact($scope.updatedContact);
+
+			promise.then(function(result) {
+				_self.close().then(function(){
+					$rootScope.$broadcast('updateContact', $scope.updatedContact);
+				});
+			});
+		};
 	}
 
-	ContactModal.$inject = ['$rootScope', 'ContactCreatorDialog', 'ContactService'];
+	ContactModal.$inject = ['$scope', '$rootScope', 'ContactActionDialog', 'ContactService'];
 
 	angular.module('contactListApp')
 		.controller('ContactModal', ContactModal);
