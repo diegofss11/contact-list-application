@@ -62,6 +62,7 @@ module.exports = function( grunt ) {
 						'public/vendor/angular-route/angular-route.js',
 						'public/dist/js/templates_cache.js',
 						'public/vendor/angular-modal/modal.js',
+						'public/vendor/angular-animate/angular-animate.js',
 
 						//APP FILES
 						'public/js/app.js',

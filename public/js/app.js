@@ -1,5 +1,5 @@
 'use strict';
-angular.module('contactListApp', ['contactListApp.tpls', 'ui.bootstrap', 'ngRoute', 'btford.modal']);
+angular.module('contactListApp', ['contactListApp.tpls', 'ui.bootstrap', 'ngRoute', 'ngAnimate', 'btford.modal']);
 
 angular.module('contactListApp')
     .value('config', {

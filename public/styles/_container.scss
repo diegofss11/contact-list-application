@@ -39,7 +39,8 @@ footer {
   .action-bar {
     padding: 14px;
 
-    a:hover {
+    a:hover,
+    a:focus {
       text-decoration: none;
     }
 
@@ -71,7 +72,7 @@ footer {
     }
 
     &::before {
-       font-size: 20px;
+      font-size: 20px;
       line-height: 20px;
       vertical-align: middle;
     }
@@ -94,17 +95,36 @@ footer {
   width: 100%;
   font-weight: 600;
 
-  &.ng-enter, &.ng-leave {
-    @include opacity(0.5);
+  &.ng-enter,
+  &.ng-leave {
+    @include transparent;
+    @include transition(opacity, 1s ease-out);
   }
 
   &.ng-enter,
   &.ng-leave.ng-leave-active {
-    opacity:0;
+    opacity: 0;
   }
 
   &.ng-leave,
   &.ng-enter.ng-enter-active {
-    opacity:1;
+    opacity: 1;
+  }
+}
+
+.contact {
+  &.ng-enter,
+  &.contact.ng-leave {
+    @include transition(opacity, .5s ease-out);
+  }
+
+  &.ng-enter.ng-enter-active,
+  &.contact.ng-leave {
+    opacity: 0;
+  }
+
+  &.ng-leave.ng-leave-active,
+  &.ng-enter {
+    opacity: 1;
   }
 }
