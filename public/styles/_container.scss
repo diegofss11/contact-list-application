@@ -111,20 +111,3 @@ footer {
     opacity: 1;
   }
 }
-
-.contact {
-  &.ng-enter,
-  &.contact.ng-leave {
-    @include transition(opacity, .5s ease-out);
-  }
-
-  &.ng-enter.ng-enter-active,
-  &.contact.ng-leave {
-    opacity: 0;
-  }
-
-  &.ng-leave.ng-leave-active,
-  &.ng-enter {
-    opacity: 1;
-  }
-}
