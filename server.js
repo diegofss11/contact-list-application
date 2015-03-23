@@ -10,7 +10,7 @@ var express = require('express'),
 //setting up
 app.set('port', port);
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/'));
 app.use(bodyParser()); //To extract params from the body of the requests
 app.use(bodyParser());
 
