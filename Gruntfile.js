@@ -132,7 +132,7 @@ module.exports = function( grunt ) {
 		}
   	});
 
-  	//** LOAD TASKS  
+  	//** LOAD TASKS
 	grunt.loadNpmTasks('grunt-protractor-runner');
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-contrib-compass'); //compile SASS to CSS - must install compass through gem - gem install compass
@@ -144,16 +144,16 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks('grunt-contrib-watch'); //run predefined tasks whenever watched file patterns are added, changed or deleted.
 
 	//** REGISTER TASKS
-	  
+
 	//DEFAULT
 	grunt.registerTask('default', ['clean', 'html2js', 'compass', 'injector', 'watch']);
 
 	//GRUNT TEST-KARMA
 	grunt.registerTask('test', ['html2js', 'karma']);
-	
+
 	//GRUNT TEST-PROTRACTOR
 	grunt.registerTask('test-ui', ['protractor']);
-	
+
 	//GRUNT SASS
 	grunt.registerTask('sass', ['compass:dev']);
 };

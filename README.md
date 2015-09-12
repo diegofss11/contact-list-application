@@ -50,9 +50,9 @@ The application server is a NodeJS application that relies upon some 3rd Party n
     ```
 
   (This will install the dependencies declared in the package.json file)
-  
+
 * To run the CLIENTE project:
-   
+
     ```
     cd contact-list-application
     grunt
@@ -75,15 +75,15 @@ All the tests files are included in /test/spec/services/*
 The Karma config file is located  in /test/spec
 
 * To run jasmine tests with Karma using Grunt(root folder):
-    
+
     ```
-    grunt karma or grunt test-karma
+    grunt test
     ```
 
 ### Protractor E2E Tests
 
 * To run protractor using Grunt(root folder):
-    
+
     ```
     grunt protractor or grunt test-protractor
     ```
