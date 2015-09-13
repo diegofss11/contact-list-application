@@ -1,10 +1,13 @@
-module.exports = function( grunt ) { 
+module.exports = function( grunt ) {
 	grunt.initConfig({
 	  	pkg: grunt.file.readJSON('package.json'),
 
 		karma: {
 	        unit: {
 	            configFile: 'config/karma.config.js'
+	        },
+	        watch: {
+	        	singleRun: false
 	        }
 	    },
 	    protractor: {
@@ -63,6 +66,7 @@ module.exports = function( grunt ) {
 						'public/dist/js/templates_cache.js',
 						'public/vendor/angular-modal/modal.js',
 						'public/vendor/angular-animate/angular-animate.js',
+						'public/vendor/angular-mocks/angular-mocks.js',
 
 						//APP FILES
 						'public/js/app.js',
@@ -148,8 +152,9 @@ module.exports = function( grunt ) {
 	//DEFAULT
 	grunt.registerTask('default', ['clean', 'html2js', 'compass', 'injector', 'watch']);
 
-	//GRUNT TEST-KARMA
-	grunt.registerTask('test', ['html2js', 'karma']);
+	//GRUNT TEST
+	grunt.registerTask('test', ['clean', 'html2js', 'injector', 'karma:unit']);
+	grunt.registerTask('test-watch', ['html2js', 'karma:watch']);
 
 	//GRUNT TEST-PROTRACTOR
 	grunt.registerTask('test-ui', ['protractor']);

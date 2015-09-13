@@ -19,6 +19,7 @@ module.exports = function(config) {
         'public/vendor/angular-bootstrap/ui-bootstrap.min.js',
         'public/vendor/angular-mocks/angular-mocks.js',
         'public/vendor/angular-route/angular-route.min.js',
+        'public/vendor/angular-animate/angular-animate.min.js',
         'public/dist/js/templates_cache.js',
         'public/vendor/angular-modal/modal.min.js',
 
@@ -76,6 +77,6 @@ module.exports = function(config) {
 
       // Continuous Integration mode
       // if true, Karma captures browsers, runs the tests and exits
-      singleRun: false
+      singleRun: true
   });
 };

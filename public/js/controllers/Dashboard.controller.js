@@ -8,7 +8,7 @@
         _self.openContactActionModal = ContactActionDialog.activate;
 
          _self.findAll = function() {
-             ContactService.findAll();
+            ContactService.findAll();
          };
 
         _self.findAll();
