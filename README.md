@@ -1,6 +1,8 @@
 Contact List Application V3.0
 ========================
 
+[![Build Status](https://travis-ci.org/diegofss11/contact-list-application.svg?branch=master)](https://travis-ci.org/diegofss11/contact-list-application)
+
 ## Technology Stack
 
 * <b>[MEAN Stack]</b> - stands for <b>M</b>ongoDB, <b>E</b>xpress, <b>A</b>ngularJS, <b>N</b>ode.js
